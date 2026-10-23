@@ -9,15 +9,15 @@ export const CaseStudiesSection: React.FC = () => {
         {/* Header */}
         <div className="max-w-3xl mb-16">
           <div className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-400 mb-3">
-            Section 07 & 14 • Field Execution Proof
+            Verified Field Execution
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight uppercase">
             Audited Outcomes. <br />
             <span className="text-zinc-500">Zero Fabricated Metrics.</span>
           </h2>
           <p className="text-sm text-zinc-400 mt-4 leading-relaxed font-sans">
-            In compliance with Blueprint Section 2.3 & 7.1, we only publish verified participant attendance, 
-            audited repository submissions, and real faculty coordinator sign-offs.
+            We only publish verified participant attendance, audited repository submissions, 
+            and authentic faculty coordinator and engineering lead sign-offs.
           </p>
         </div>
 

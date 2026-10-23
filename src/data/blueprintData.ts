@@ -3,11 +3,9 @@ import { ServicePackage, AddonService, CaseStudy, OperatingPhase, EventRole } fr
 export const VOYAGE_META = {
   name: 'VOYAGE',
   legalDomain: 'voyagehacks.in',
-  tagline: 'TECH EVENTS. REAL IMPACT.',
-  subline: 'One partner for planning, promotion and execution.',
-  communityPartner: 'GRID Community (2,000+ Developers)',
-  logoUrl: '/assets/aistudio/image_aef352cb.png',
-  version: '1.0 | October 2026',
+  tagline: 'High-Performance Technical Events for Colleges and Startups',
+  subline: 'Turnkey technical event management, MLH-grade workflows, and on-ground execution.',
+  communityPartner: 'GRID Developer Community (2,000+ Builders)',
 };
 
 export const PACKAGES: ServicePackage[] = [

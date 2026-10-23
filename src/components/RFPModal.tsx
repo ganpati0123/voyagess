@@ -67,7 +67,7 @@ export const RFPModal: React.FC<RFPModalProps> = ({
         <div className="p-6 bg-black border-b border-white/10 flex items-center justify-between">
           <div>
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-0.5">
-              Discovery Phase 1 • Statement of Work Request
+              Discovery Brief • Formal Proposal Intake
             </span>
             <h3 className="text-xl font-display font-bold text-white uppercase tracking-tight">
               {submittedRequest ? 'RFP Logged Successfully' : 'Request Event Proposal'}
@@ -243,14 +243,14 @@ export const RFPModal: React.FC<RFPModalProps> = ({
             <div className="pt-4 border-t border-white/10 flex items-center justify-between">
               <div className="flex items-center space-x-2 text-zinc-500 text-[10px]">
                 <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
-                <span>Zero spam. Strict data privacy under SOP 11.0</span>
+                <span>Zero spam. Strict institutional confidentiality guaranteed.</span>
               </div>
 
               <button
                 type="submit"
                 className="px-6 py-3 bg-white hover:bg-zinc-200 text-black font-bold uppercase text-xs tracking-wider rounded-xl transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-white/10"
               >
-                <span>Dispatch Discovery RFP</span>
+                <span>Submit Discovery Brief</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

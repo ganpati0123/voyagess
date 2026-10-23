@@ -9,7 +9,7 @@ export const CompetitiveAdvantageSection: React.FC = () => {
         {/* Header */}
         <div className="max-w-3xl mb-16">
           <div className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-400 mb-3">
-            Section 04 • Strategic Distinction
+            Strategic Distinction
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight uppercase">
             Why Traditional Alternatives <br />
@@ -26,7 +26,7 @@ export const CompetitiveAdvantageSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 bg-black border-b border-white/10 p-5 text-xs font-mono uppercase tracking-wider text-zinc-400 font-bold hidden md:grid">
             <div className="md:col-span-3">Alternative Provider</div>
             <div className="md:col-span-4">Where They Stall</div>
-            <div className="md:col-span-5 text-white">The VOYAGE Distinction (SOP 4.0)</div>
+            <div className="md:col-span-5 text-white">The VOYAGE Standard</div>
           </div>
 
           <div className="divide-y divide-white/10 font-sans">
@@ -78,7 +78,7 @@ export const CompetitiveAdvantageSection: React.FC = () => {
         <div className="mt-12 p-8 rounded-3xl bg-zinc-950 border border-white/20 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="max-w-2xl">
             <span className="text-xs font-mono uppercase tracking-widest text-zinc-400 block mb-1">
-              Core Brand Promise (Blueprint 2.1)
+              Core Brand Proposition
             </span>
             <h3 className="text-xl sm:text-2xl font-display font-bold text-white uppercase">
               &ldquo;VOYAGE plans, promotes and executes technology-driven experiences—from campus hackathons and developer workshops to corporate innovation events.&rdquo;

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
+import { LogoIntro } from './components/LogoIntro';
 import { HeroSection } from './components/HeroSection';
+import { HowItWorks } from './components/HowItWorks';
 import { ServicesSection } from './components/ServicesSection';
-import { ProposalBuilderModal } from './components/ProposalBuilderModal';
-import { OperatingSystemSection } from './components/OperatingSystemSection';
+import { BrandArchitectureSection } from './components/BrandArchitectureSection';
 import { CompetitiveAdvantageSection } from './components/CompetitiveAdvantageSection';
 import { CaseStudiesSection } from './components/CaseStudiesSection';
+import { ProposalBuilderModal } from './components/ProposalBuilderModal';
 import { RFPModal } from './components/RFPModal';
 import { GridCommunityModal } from './components/GridCommunityModal';
 import { Footer } from './components/Footer';
@@ -13,6 +15,7 @@ import { ServiceTier, ProposalRequest } from './types';
 import { CheckCircle2, X } from 'lucide-react';
 
 export function App() {
+  const [showLogoIntro, setShowLogoIntro] = useState<boolean>(true);
   const [isRFPOpen, setIsRFPOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [isCommunityModalOpen, setIsCommunityModalOpen] = useState(false);
@@ -57,6 +60,12 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black flex flex-col font-sans">
+      {/* V-Logo Light Flow Preloader Intro */}
+      <LogoIntro
+        isOpen={showLogoIntro}
+        onComplete={() => setShowLogoIntro(false)}
+      />
+
       {/* Top Banner Notice if Proposal Dispatched */}
       {recentRFP && (
         <div className="bg-zinc-900 border-b border-white/20 text-white text-xs font-mono py-2.5 px-4 sticky top-0 z-50 flex items-center justify-between backdrop-blur-md">
@@ -79,7 +88,7 @@ export function App() {
       <Header
         onOpenRFP={() => setIsRFPOpen(true)}
         onOpenCalculator={() => setIsCalculatorOpen(true)}
-        onOpenCommunity={() => setIsCommunityModalOpen(true)}
+        onReplayIntro={() => setShowLogoIntro(true)}
         onNavigate={scrollToSection}
       />
 
@@ -87,7 +96,14 @@ export function App() {
       <HeroSection
         onOpenRFP={() => setIsRFPOpen(true)}
         onOpenCalculator={() => setIsCalculatorOpen(true)}
+        onReplayIntro={() => setShowLogoIntro(true)}
         onNavigate={scrollToSection}
+      />
+
+      {/* The Turnkey Event Model */}
+      <HowItWorks
+        onOpenRFP={() => setIsRFPOpen(true)}
+        onOpenCalculator={() => setIsCalculatorOpen(true)}
       />
 
       {/* Services & Packages Section */}
@@ -96,8 +112,8 @@ export function App() {
         onOpenRFPWithPackage={handleOpenRFPWithPackage}
       />
 
-      {/* 9-Phase Event Delivery Operating System */}
-      <OperatingSystemSection />
+      {/* Two Pillars: VOYAGE (The Company) + GRID (2,000+ Community) */}
+      <BrandArchitectureSection />
 
       {/* Strategic Distinction & Competitive Matrix */}
       <CompetitiveAdvantageSection />

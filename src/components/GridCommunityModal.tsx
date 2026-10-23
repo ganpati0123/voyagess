@@ -20,7 +20,7 @@ export const GridCommunityModal: React.FC<GridCommunityModalProps> = ({ isOpen, 
             </div>
             <div>
               <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 block">
-                Section 02 • Brand Architecture & Synergy
+                Ecosystem Architecture & Synergy
               </span>
               <h3 className="text-xl font-display font-bold text-white uppercase tracking-tight">
                 VOYAGE × GRID Developer Ecosystem
@@ -68,7 +68,7 @@ export const GridCommunityModal: React.FC<GridCommunityModalProps> = ({ isOpen, 
             <div className="p-3 bg-zinc-900/60 rounded-xl border border-white/10">
               <span className="text-zinc-500 block uppercase text-[9px]">Community Integrity</span>
               <span className="text-white font-bold text-sm">Zero Spam Mandate</span>
-              <span className="text-zinc-400 text-[10px] block mt-0.5">Blueprint Section 2.4</span>
+              <span className="text-zinc-400 text-[10px] block mt-0.5">Authentic Community Trust</span>
             </div>
           </div>
 

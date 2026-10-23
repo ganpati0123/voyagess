@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Check, Calculator, Printer, ArrowRight, ShieldCheck, FileText, ChevronRight } from 'lucide-react';
+import { VoyageLogo } from './VoyageLogo';
 import { PACKAGES, ADDONS, VOYAGE_META } from '../data/blueprintData';
 import { ServiceTier } from '../types';
 
@@ -98,10 +99,10 @@ export const ProposalBuilderModal: React.FC<ProposalBuilderModalProps> = ({
             </div>
             <div>
               <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 block">
-                Section 10 • Pricing & Financial Controls
+                Transparent SOW Architecture
               </span>
               <h3 className="text-xl font-display font-bold text-white uppercase tracking-tight">
-                Statement of Work (SOW) & Fee Estimator
+                Statement of Work & Fee Estimator
               </h3>
             </div>
           </div>
@@ -130,15 +131,19 @@ export const ProposalBuilderModal: React.FC<ProposalBuilderModalProps> = ({
           <div className="p-8 overflow-y-auto space-y-6 text-xs font-mono text-zinc-300 bg-black">
             <div className="border border-white/20 p-8 rounded-2xl bg-zinc-950 space-y-6">
               <div className="flex justify-between items-start border-b border-white/10 pb-6">
-                <div>
-                  <h1 className="text-2xl font-display font-black text-white tracking-wider">VOYAGE</h1>
-                  <p className="text-zinc-400">{VOYAGE_META.legalDomain} • {VOYAGE_META.tagline}</p>
-                  <p className="text-zinc-500 text-[10px] mt-1">STATEMENT OF WORK (SOW) & PROPOSAL ESTIMATE • REF #VYG-SOW-{Date.now().toString().slice(-4)}</p>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-white/20 p-1 flex items-center justify-center">
+                    <VoyageLogo size="sm" animated={false} />
+                  </div>
+                  <div>
+                    <h1 className="text-2xl font-display font-black text-white tracking-wider">VOYAGE</h1>
+                    <p className="text-zinc-400 text-xs">{VOYAGE_META.legalDomain}</p>
+                  </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-white font-bold">STATUS: DRAFT PROPOSAL</p>
+                  <p className="text-white font-bold">STATEMENT OF WORK (SOW)</p>
                   <p className="text-zinc-400">Date: {new Date().toLocaleDateString()}</p>
-                  <p className="text-zinc-400">Validity: 14 Days from issuance</p>
+                  <p className="text-zinc-400">Validity: 14 Days</p>
                 </div>
               </div>
 
@@ -181,7 +186,7 @@ export const ProposalBuilderModal: React.FC<ProposalBuilderModalProps> = ({
               </div>
 
               <div className="border-t border-white/10 pt-4">
-                <h4 className="text-white font-bold uppercase mb-2">4. Payment Milestone Terms (SOP 10.2)</h4>
+                <h4 className="text-white font-bold uppercase mb-2">4. Payment Milestone Schedule</h4>
                 <div className="grid grid-cols-3 gap-3 text-center">
                   <div className="p-3 border border-white/10 rounded">
                     <span className="block text-zinc-500 text-[10px]">50% UPFRONT ADVANCE</span>
@@ -335,7 +340,7 @@ export const ProposalBuilderModal: React.FC<ProposalBuilderModalProps> = ({
               <div className="space-y-6">
                 <div className="border-b border-white/10 pb-4">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block mb-1">
-                    Automated Cost Breakdown (Section 10.1)
+                    Cost Structure Allocation
                   </span>
                   <div className="flex items-baseline justify-between">
                     <span className="text-3xl font-display font-bold text-white tracking-tight">
@@ -371,7 +376,7 @@ export const ProposalBuilderModal: React.FC<ProposalBuilderModalProps> = ({
                 {/* 50 / 30 / 20 Payment Policy */}
                 <div className="bg-zinc-950 p-4 rounded-xl border border-white/15 space-y-2">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block">
-                    Structured Cash-Flow Policy (SOP 10.2)
+                    Milestone Payment Policy
                   </span>
                   <div className="space-y-1.5 text-xs font-mono">
                     <div className="flex justify-between text-zinc-300">
