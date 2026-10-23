@@ -15,10 +15,10 @@ export const MLH_ACCREDITATION = {
   headline: 'The Coveted MLH Tag. Guaranteed for Your Event.',
   subheading: 'Major League Hacking (MLH) member season status is the pinnacle of global hackathon prestige—awarded to fewer than 2% of collegiate events worldwide. VOYAGE manages end-to-end compliance and secures the official MLH accreditation tag directly for your event.',
   stats: [
-    { label: 'Global Acceptance Rate', value: '< 2%', note: 'Exclusive official circuit' },
-    { label: 'MLH Hardware Lab', value: 'Included', note: 'Oculus, IoT kits & test devices' },
-    { label: 'Official Season Points', value: 'Live', note: 'Draws top-tier global builders' },
-    { label: 'Tier-1 Tech Sponsors', value: 'Direct', note: 'GitHub, AWS, Google Cloud' },
+    { label: 'Global Qualification Rate', value: '< 2%', note: 'Fewer than 2 in 100 hackathons worldwide are approved by MLH' },
+    { label: 'MLH Hardware Lab', value: 'Included', note: 'Oculus VR, IoT kits & test devices shipped directly' },
+    { label: 'Official Circuit Points', value: 'Live', note: 'Draws top-tier national & global developers' },
+    { label: 'Tier-1 Tech Sponsors', value: 'Direct', note: 'Direct access to GitHub, AWS, Google Cloud perks' },
   ],
   pillars: [
     {

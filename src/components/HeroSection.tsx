@@ -38,8 +38,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <span className="text-xs sm:text-sm font-mono font-black tracking-wider uppercase text-white">
             OFFICIAL MLH TAG FOR YOUR HACKATHON EVENT
           </span>
-          <span className="text-xs text-zinc-300 font-mono tracking-widest uppercase bg-white/10 px-2 py-0.5 rounded-full border border-white/20">
-            &lt; 2% SELECTION
+          <span className="text-[11px] text-zinc-300 font-mono tracking-wider uppercase bg-white/10 px-2.5 py-0.5 rounded-full border border-white/20">
+            TOP 2% ELITE CIRCUIT
           </span>
           <span className="text-xs text-white group-hover:translate-x-1 transition-transform">→</span>
         </div>
@@ -103,10 +103,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               &lt; 2%
             </div>
             <div className="text-[10px] font-mono text-zinc-300 uppercase tracking-wider mt-1 font-bold">
-              Official MLH Tag
+              Global Acceptance
             </div>
-            <p className="text-[10px] text-zinc-500 mt-0.5">
-              Guaranteed Sanctioning
+            <p className="text-[10px] text-zinc-400 mt-0.5">
+              Only ~2 in 100 events approved
             </p>
           </div>
 
