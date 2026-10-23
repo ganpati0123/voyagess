@@ -16,7 +16,7 @@ import { ServiceTier, ProposalRequest } from './types';
 import { CheckCircle2, X } from 'lucide-react';
 
 export function App() {
-  const [showLogoIntro, setShowLogoIntro] = useState<boolean>(false);
+  const [showLogoIntro, setShowLogoIntro] = useState<boolean>(true);
   const [isRFPOpen, setIsRFPOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [isCommunityModalOpen, setIsCommunityModalOpen] = useState(false);
