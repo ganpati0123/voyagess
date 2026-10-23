@@ -4,7 +4,7 @@ import { VERIFIED_CASE_STUDIES } from '../data/blueprintData';
 
 export const CaseStudiesSection: React.FC = () => {
   return (
-    <section id="case-studies" className="py-28 bg-black border-b border-white/10 relative">
+    <section id="proof" className="py-24 sm:py-32 bg-black border-b border-white/10 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mb-16">

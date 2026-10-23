@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowUpRight, Play, Menu, X, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { VoyageLogo } from './VoyageLogo';
 import { VOYAGE_META } from '../data/blueprintData';
 
@@ -16,91 +16,74 @@ export const Header: React.FC<HeaderProps> = ({
   onReplayIntro,
   onNavigate,
 }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-black/85 backdrop-blur-xl border-b border-white/10 transition-all">
+    <header className="sticky top-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/10 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo Brand with Pure Code-Generated 3D Emblem */}
+        <div className="flex items-center justify-between gap-8 h-20">
+          {/* Zone 1: Single Brand Wordmark & Logo */}
           <div 
             onClick={() => { onNavigate('hero'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="flex items-center space-x-3.5 cursor-pointer group"
+            className="flex items-center space-x-3 cursor-pointer group shrink-0"
           >
-            <div className="relative w-10 h-10 rounded-xl bg-zinc-950 border border-white/20 p-1 flex items-center justify-center overflow-hidden group-hover:border-white transition-colors duration-300">
-              <VoyageLogo size="sm" animated={true} />
+            <div className="w-8 h-8 rounded-lg bg-zinc-950 border border-white/20 p-1 flex items-center justify-center group-hover:border-white transition-colors duration-300">
+              <VoyageLogo size="xs" animated={true} />
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <span className="text-xl font-display font-black tracking-widest text-white uppercase">
-                  {VOYAGE_META.name}
-                </span>
-              </div>
-              <p className="text-[9px] tracking-[0.25em] uppercase text-zinc-400 font-mono">
-                HIGH-PERFORMANCE TECHNICAL EVENTS
-              </p>
-            </div>
+            <span className="text-xl font-display font-black tracking-widest text-white uppercase whitespace-nowrap">
+              {VOYAGE_META.name}
+            </span>
           </div>
 
-          {/* Clean Desktop Navigation */}
+          {/* Zone 2: 4-5 Clean Single-Line Nav Links */}
           <nav className="hidden md:flex items-center space-x-8 text-xs font-mono tracking-wider uppercase text-zinc-400">
             <button
               onClick={() => onNavigate('mlh-tag')}
-              className="hover:text-white transition cursor-pointer flex items-center space-x-1 text-zinc-200"
+              className="hover:text-white transition-colors cursor-pointer whitespace-nowrap flex items-center space-x-1.5"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-white mr-1"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
               <span>Official MLH Tag</span>
             </button>
             <button
               onClick={() => onNavigate('turnkey')}
-              className="hover:text-white transition cursor-pointer"
+              className="hover:text-white transition-colors cursor-pointer whitespace-nowrap"
             >
-              How It Works
+              Turnkey Model
             </button>
             <button
-              onClick={() => onNavigate('services')}
-              className="hover:text-white transition cursor-pointer"
+              onClick={() => onNavigate('packages')}
+              className="hover:text-white transition-colors cursor-pointer whitespace-nowrap"
             >
               Packages
             </button>
             <button
               onClick={() => onNavigate('ecosystem')}
-              className="hover:text-white transition cursor-pointer flex items-center space-x-1"
+              className="hover:text-white transition-colors cursor-pointer whitespace-nowrap"
             >
-              <span>GRID Network</span>
-              <span className="text-[9px] text-zinc-400 border border-white/10 px-1 rounded">2K+</span>
+              GRID Network
             </button>
             <button
               onClick={() => onNavigate('proof')}
-              className="hover:text-white transition cursor-pointer"
+              className="hover:text-white transition-colors cursor-pointer whitespace-nowrap"
             >
               Audited Proof
             </button>
           </nav>
 
-          {/* Right Action Controls */}
-          <div className="hidden sm:flex items-center space-x-3">
-            <button
-              onClick={onReplayIntro}
-              title="Replay V-Light Flow Animation"
-              className="px-3 py-2 rounded-xl text-xs font-mono text-zinc-400 hover:text-white border border-white/10 hover:border-white/30 transition flex items-center space-x-1.5 cursor-pointer bg-zinc-950/60"
-            >
-              <Play className="w-3 h-3 fill-current" />
-              <span>V-Flow</span>
-            </button>
-
+          {/* Zone 3: Primary Action & Tools */}
+          <div className="hidden sm:flex items-center space-x-3 shrink-0">
             <button
               onClick={onOpenCalculator}
-              className="px-4 py-2 rounded-xl text-xs font-mono text-zinc-300 hover:text-white border border-white/15 hover:border-white/30 transition cursor-pointer"
+              className="px-4 py-2 rounded-xl text-xs font-mono text-zinc-300 hover:text-white border border-white/15 hover:border-white/30 transition-colors cursor-pointer whitespace-nowrap"
             >
               SOW Estimator
             </button>
 
             <button
               onClick={onOpenRFP}
-              className="px-5 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition active:scale-95 cursor-pointer flex items-center space-x-1.5 shadow-lg shadow-white/5"
+              className="px-5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all active:scale-95 cursor-pointer flex items-center space-x-1.5 shadow-lg shadow-white/5 whitespace-nowrap"
             >
-              <span>Host an Event</span>
+              <span>Request Proposal</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -109,15 +92,16 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex md:hidden items-center space-x-2">
             <button
               onClick={onOpenRFP}
-              className="px-3 py-1.5 rounded-lg text-[11px] font-mono font-bold uppercase bg-white text-black"
+              className="px-3.5 py-1.5 rounded-lg text-[11px] font-mono font-bold uppercase bg-white text-black whitespace-nowrap"
             >
-              Host
+              Proposal
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-zinc-400 hover:text-white"
+              aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -138,13 +122,13 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => { onNavigate('turnkey'); setMobileMenuOpen(false); }}
               className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900"
             >
-              How It Works (Turnkey Model)
+              Turnkey Model
             </button>
             <button
-              onClick={() => { onNavigate('services'); setMobileMenuOpen(false); }}
+              onClick={() => { onNavigate('packages'); setMobileMenuOpen(false); }}
               className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900"
             >
-              Packages & Pricing
+              Packages & Scope
             </button>
             <button
               onClick={() => { onNavigate('ecosystem'); setMobileMenuOpen(false); }}
@@ -156,14 +140,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => { onNavigate('proof'); setMobileMenuOpen(false); }}
               className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900"
             >
-              Audited Field Proof
-            </button>
-            <button
-              onClick={() => { onReplayIntro(); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900 flex items-center space-x-2"
-            >
-              <Play className="w-3.5 h-3.5 fill-current" />
-              <span>Replay V-Flow Animation</span>
+              Audited Proof
             </button>
           </div>
 
@@ -178,7 +155,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => { onOpenRFP(); setMobileMenuOpen(false); }}
               className="w-full py-2.5 rounded-lg bg-white text-black font-mono font-bold text-center uppercase"
             >
-              Host An Event
+              Request Proposal
             </button>
           </div>
         </div>

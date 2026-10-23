@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { LogoIntro } from './components/LogoIntro';
 import { HeroSection } from './components/HeroSection';
@@ -16,7 +16,7 @@ import { ServiceTier, ProposalRequest } from './types';
 import { CheckCircle2, X } from 'lucide-react';
 
 export function App() {
-  const [showLogoIntro, setShowLogoIntro] = useState<boolean>(true);
+  const [showLogoIntro, setShowLogoIntro] = useState<boolean>(false);
   const [isRFPOpen, setIsRFPOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [isCommunityModalOpen, setIsCommunityModalOpen] = useState(false);
@@ -60,32 +60,36 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black flex flex-col font-sans">
-      {/* V-Logo Light Flow Preloader Intro */}
+    <div className="min-h-screen bg-[#030303] text-zinc-100 selection:bg-white selection:text-black flex flex-col font-sans relative">
+      {/* Interactive V-Logo Specular Flow Replay Modal */}
       <LogoIntro
         isOpen={showLogoIntro}
         onComplete={() => setShowLogoIntro(false)}
       />
 
-      {/* Top Banner Notice if Proposal Dispatched */}
+      {/* Discreet Sticky Notice when an RFP is logged */}
       {recentRFP && (
-        <div className="bg-zinc-900 border-b border-white/20 text-white text-xs font-mono py-2.5 px-4 sticky top-0 z-50 flex items-center justify-between backdrop-blur-md">
+        <aside 
+          aria-label="Proposal Confirmation"
+          className="bg-zinc-950/95 border-b border-white/20 text-white text-xs font-mono py-2.5 px-4 sticky top-0 z-50 flex items-center justify-between backdrop-blur-md"
+        >
           <div className="flex items-center space-x-2 max-w-4xl mx-auto truncate">
             <CheckCircle2 className="w-4 h-4 text-white shrink-0" />
             <span className="truncate">
-              Proposal Request <strong>{recentRFP.id}</strong> logged for <strong>{recentRFP.organisationName}</strong>. Discovery brief queued.
+              Discovery Brief <strong>{recentRFP.id}</strong> logged for <strong>{recentRFP.organisationName}</strong>. Discovery call scheduled within 24h.
             </span>
           </div>
           <button
             onClick={() => setRecentRFP(null)}
             className="text-zinc-400 hover:text-white p-1"
+            aria-label="Dismiss notice"
           >
             <X className="w-3.5 h-3.5" />
           </button>
-        </div>
+        </aside>
       )}
 
-      {/* Navigation Header */}
+      {/* Navigation Header adhering to 3-Zone Top Bar Contract */}
       <Header
         onOpenRFP={() => setIsRFPOpen(true)}
         onOpenCalculator={() => setIsCalculatorOpen(true)}
@@ -93,42 +97,45 @@ export function App() {
         onNavigate={scrollToSection}
       />
 
-      {/* Hero Section */}
-      <HeroSection
-        onOpenRFP={() => setIsRFPOpen(true)}
-        onOpenCalculator={() => setIsCalculatorOpen(true)}
-        onReplayIntro={() => setShowLogoIntro(true)}
-        onNavigate={scrollToSection}
-      />
+      {/* Main Content Sections with Generous Whitespace */}
+      <main className="flex-1">
+        {/* Hero Section */}
+        <HeroSection
+          onOpenRFP={() => setIsRFPOpen(true)}
+          onOpenCalculator={() => setIsCalculatorOpen(true)}
+          onReplayIntro={() => setShowLogoIntro(true)}
+          onNavigate={scrollToSection}
+        />
 
-      {/* The Crown Jewel USP: Official MLH Tag Sanctioning */}
-      <MLHAccreditationSection
-        onOpenRFP={() => setIsRFPOpen(true)}
-        onOpenCalculator={() => setIsCalculatorOpen(true)}
-      />
+        {/* The Crown Jewel USP: Official MLH Tag Sanctioning */}
+        <MLHAccreditationSection
+          onOpenRFP={() => setIsRFPOpen(true)}
+          onOpenCalculator={() => setIsCalculatorOpen(true)}
+        />
 
-      {/* The Turnkey Event Model */}
-      <HowItWorks
-        onOpenRFP={() => setIsRFPOpen(true)}
-        onOpenCalculator={() => setIsCalculatorOpen(true)}
-      />
+        {/* The Turnkey Operating Model */}
+        <HowItWorks
+          onOpenRFP={() => setIsRFPOpen(true)}
+          onOpenCalculator={() => setIsCalculatorOpen(true)}
+        />
 
-      {/* Services & Packages Section */}
-      <ServicesSection
-        onSelectPackageForSOW={handleSelectPackageForSOW}
-        onOpenRFPWithPackage={handleOpenRFPWithPackage}
-      />
+        {/* Modular Packages & Scope */}
+        <ServicesSection
+          onSelectPackageForSOW={handleSelectPackageForSOW}
+          onOpenRFPWithPackage={handleOpenRFPWithPackage}
+        />
 
-      {/* Two Pillars: VOYAGE (The Company) + GRID (2,000+ Community) */}
-      <BrandArchitectureSection />
+        {/* Brand Synergy: VOYAGE (The Agency) + GRID (2K+ Community) */}
+        <BrandArchitectureSection />
 
-      {/* Strategic Distinction & Competitive Matrix */}
-      <CompetitiveAdvantageSection />
+        {/* Strategic Distinction Matrix */}
+        <CompetitiveAdvantageSection />
 
-      {/* Verified Field Proof & Case Studies */}
-      <CaseStudiesSection />
+        {/* Verified Field Proof & Audited Case Studies */}
+        <CaseStudiesSection />
+      </main>
 
-      {/* Footer */}
+      {/* Minimalist Editorial Footer */}
       <Footer
         onOpenRFP={() => setIsRFPOpen(true)}
         onOpenCalculator={() => setIsCalculatorOpen(true)}
@@ -136,7 +143,7 @@ export function App() {
         onNavigate={scrollToSection}
       />
 
-      {/* Interactive SOW Proposal & Budget Estimator Modal */}
+      {/* Interactive SOW Budget Estimator Modal */}
       <ProposalBuilderModal
         isOpen={isCalculatorOpen}
         onClose={() => setIsCalculatorOpen(false)}
@@ -144,7 +151,7 @@ export function App() {
         onProceedToRFP={handleProceedFromSOWToRFP}
       />
 
-      {/* Discovery RFP Request Modal */}
+      {/* Instant Discovery RFP Walkthrough Modal */}
       <RFPModal
         isOpen={isRFPOpen}
         onClose={() => setIsRFPOpen(false)}

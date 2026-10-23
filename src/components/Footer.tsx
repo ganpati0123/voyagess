@@ -65,11 +65,11 @@ export const Footer: React.FC<FooterProps> = ({
                 {VOYAGE_META.name}
               </span>
             </div>
-            <p className="text-xs text-zinc-400 font-sans leading-relaxed">
-              &ldquo;We believe in flawless delivery. Smooth, high-precision technical event engineering.&rdquo;
+            <p className="text-xs text-zinc-300 font-sans italic leading-relaxed">
+              &ldquo;{VOYAGE_META.quote}&rdquo;
             </p>
             <div className="text-[11px] text-zinc-500 font-mono">
-              Turnkey Technical Production • Official MLH Sanctioning Partner
+              Boutique Technical Production · Official MLH Sanctioning Partner
             </div>
           </div>
 
@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('services')} className="hover:text-white transition">
+                <button onClick={() => onNavigate('packages')} className="hover:text-white transition">
                   Campus Hackathon (24H/48H)
                 </button>
               </li>

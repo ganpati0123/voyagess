@@ -34,7 +34,7 @@ export const ProposalBuilderModal: React.FC<ProposalBuilderModalProps> = ({
   ]);
   const [isPrintMode, setIsPrintMode] = useState<boolean>(false);
 
-  const currentPkg = PACKAGES.find((p) => p.id === selectedPkgId) || PACKAGES[2];
+  const currentPkg = PACKAGES.find((p) => p.id === selectedPkgId) || PACKAGES.find((p) => p.id === 'hackathon') || PACKAGES[0];
 
   // Price calculations based on Section 10 of PDF
   let baseFee = currentPkg.basePriceINR;
