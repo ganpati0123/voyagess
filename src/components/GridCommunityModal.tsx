@@ -39,7 +39,7 @@ export const GridCommunityModal: React.FC<GridCommunityModalProps> = ({ isOpen, 
           <div className="bg-black p-5 rounded-2xl border border-white/10 space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <span className="text-white font-bold uppercase">Commercial Event Brand</span>
-              <span className="text-white font-display font-bold text-sm tracking-wider">VOYAGE (voyagehacks.in)</span>
+              <span className="text-white font-display font-bold text-sm tracking-wider">VOYAGE</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-zinc-400 uppercase">Independent Tech Community</span>

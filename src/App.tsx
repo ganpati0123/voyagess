@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { LogoIntro } from './components/LogoIntro';
 import { HeroSection } from './components/HeroSection';
+import { MLHAccreditationSection } from './components/MLHAccreditationSection';
 import { HowItWorks } from './components/HowItWorks';
 import { ServicesSection } from './components/ServicesSection';
 import { BrandArchitectureSection } from './components/BrandArchitectureSection';
@@ -98,6 +99,12 @@ export function App() {
         onOpenCalculator={() => setIsCalculatorOpen(true)}
         onReplayIntro={() => setShowLogoIntro(true)}
         onNavigate={scrollToSection}
+      />
+
+      {/* The Crown Jewel USP: Official MLH Tag Sanctioning */}
+      <MLHAccreditationSection
+        onOpenRFP={() => setIsRFPOpen(true)}
+        onOpenCalculator={() => setIsCalculatorOpen(true)}
       />
 
       {/* The Turnkey Event Model */}

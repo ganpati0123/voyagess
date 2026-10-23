@@ -86,7 +86,7 @@ export const CompetitiveAdvantageSection: React.FC = () => {
           </div>
           <div className="shrink-0 text-right">
             <span className="text-xs font-mono text-zinc-400 block">Single Accountable Partner</span>
-            <span className="text-sm font-mono font-bold text-white">voyagehacks.in</span>
+            <span className="text-sm font-mono font-bold text-white">VOYAGE</span>
           </div>
         </div>
       </div>

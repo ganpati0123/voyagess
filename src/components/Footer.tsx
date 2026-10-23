@@ -66,10 +66,10 @@ export const Footer: React.FC<FooterProps> = ({
               </span>
             </div>
             <p className="text-xs text-zinc-400 font-sans leading-relaxed">
-              Technical event-management and production brand. Coordinated delivery across hackathons, developer bootcamps, and institutional tech fests.
+              &ldquo;We believe in flawless delivery. Smooth, high-precision technical event engineering.&rdquo;
             </p>
             <div className="text-[11px] text-zinc-500 font-mono">
-              Turnkey Technical Production • {VOYAGE_META.legalDomain}
+              Turnkey Technical Production • Official MLH Sanctioning Partner
             </div>
           </div>
 
@@ -80,13 +80,14 @@ export const Footer: React.FC<FooterProps> = ({
             </h4>
             <ul className="space-y-2.5 text-zinc-400">
               <li>
-                <button onClick={() => onNavigate('turnkey')} className="hover:text-white transition">
-                  Venue Sourcing & Setup
+                <button onClick={() => onNavigate('mlh-tag')} className="hover:text-white transition flex items-center space-x-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
+                  <span>Official MLH Tag Guarantee</span>
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('turnkey')} className="hover:text-white transition">
-                  MLH-Grade Partner Standards
+                  Venue Sourcing & Setup
                 </button>
               </li>
               <li>
@@ -137,26 +138,26 @@ export const Footer: React.FC<FooterProps> = ({
               Direct Contact
             </h4>
             <p className="text-xs text-zinc-400 font-sans mb-3 leading-relaxed">
-              We respond to qualified event discovery inquiries within 24 hours with an itemized capability deck.
+              We respond to qualified event discovery inquiries within 24 hours with a comprehensive capability deck.
             </p>
             <p className="text-white font-mono text-xs mb-1">
-              inquiry@{VOYAGE_META.legalDomain}
+              {VOYAGE_META.contactEmail}
             </p>
             <p className="text-zinc-500 text-[11px] font-mono">
-              Main Web Property: {VOYAGE_META.legalDomain}
+              Global Turnkey Technical Production
             </p>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-12 mt-12 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-zinc-500">
-          <p>© {new Date().getFullYear()} VOYAGE Initiative ({VOYAGE_META.legalDomain}). All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 sm:mt-0">
+          <p>© {new Date().getFullYear()} VOYAGE. All rights reserved.</p>
+          <div className="flex space-x-6 mt-4 sm:mt-0 font-mono">
+            <span>Official MLH Season Partner</span>
+            <span className="text-zinc-700">·</span>
             <span>Turnkey Hackathons</span>
             <span className="text-zinc-700">·</span>
-            <span>MLH Workflows</span>
-            <span className="text-zinc-700">·</span>
-            <span>Volunteer Brigade</span>
+            <span>GRID Network</span>
           </div>
         </div>
       </div>

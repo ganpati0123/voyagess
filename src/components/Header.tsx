@@ -35,18 +35,22 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="text-xl font-display font-black tracking-widest text-white uppercase">
                   {VOYAGE_META.name}
                 </span>
-                <span className="text-[10px] font-mono tracking-widest text-zinc-400 uppercase hidden sm:inline-block">
-                  voyagehacks.in
-                </span>
               </div>
               <p className="text-[9px] tracking-[0.25em] uppercase text-zinc-400 font-mono">
-                TECH EVENTS. REAL IMPACT.
+                HIGH-PERFORMANCE TECHNICAL EVENTS
               </p>
             </div>
           </div>
 
           {/* Clean Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 text-xs font-mono tracking-wider uppercase text-zinc-400">
+            <button
+              onClick={() => onNavigate('mlh-tag')}
+              className="hover:text-white transition cursor-pointer flex items-center space-x-1 text-zinc-200"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-white mr-1"></span>
+              <span>Official MLH Tag</span>
+            </button>
             <button
               onClick={() => onNavigate('turnkey')}
               className="hover:text-white transition cursor-pointer"
@@ -63,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => onNavigate('ecosystem')}
               className="hover:text-white transition cursor-pointer flex items-center space-x-1"
             >
-              <span>MLH + GRID</span>
+              <span>GRID Network</span>
               <span className="text-[9px] text-zinc-400 border border-white/10 px-1 rounded">2K+</span>
             </button>
             <button
@@ -124,6 +128,13 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="md:hidden bg-zinc-950 border-b border-white/10 px-6 py-6 space-y-4 text-xs font-mono uppercase tracking-wider">
           <div className="flex flex-col space-y-3">
             <button
+              onClick={() => { onNavigate('mlh-tag'); setMobileMenuOpen(false); }}
+              className="text-left py-2 text-white font-bold border-b border-zinc-900 flex items-center justify-between"
+            >
+              <span>Official MLH Tag Guarantee</span>
+              <span className="text-[10px] text-zinc-400 border border-white/20 px-2 py-0.5 rounded">USP</span>
+            </button>
+            <button
               onClick={() => { onNavigate('turnkey'); setMobileMenuOpen(false); }}
               className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900"
             >
@@ -139,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => { onNavigate('ecosystem'); setMobileMenuOpen(false); }}
               className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900"
             >
-              MLH Partner + GRID Community
+              GRID Community (2K+ Builders)
             </button>
             <button
               onClick={() => { onNavigate('proof'); setMobileMenuOpen(false); }}

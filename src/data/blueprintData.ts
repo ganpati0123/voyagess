@@ -2,13 +2,41 @@ import { ServicePackage, AddonService, CaseStudy, OperatingPhase, EventRole } fr
 
 export const VOYAGE_META = {
   name: 'VOYAGE',
-  legalDomain: 'voyagehacks.in',
   tagline: 'High-Performance Technical Events for Colleges and Startups',
-  subline: 'Turnkey technical event management, MLH-grade workflows, and on-ground execution.',
-  communityPartner: 'GRID Developer Community (2,000+ Builders)',
+  quote: 'We believe in flawless delivery. Smooth, high-precision technical event engineering.',
+  subline: 'Complete turnkey technical event production, official MLH season accreditation, and on-ground operational mastery.',
+  communityPartner: 'GRID Developer Community (2,000+ Active Builders)',
+  contactEmail: 'partnerships@voyage.events',
 };
-
-export const PACKAGES: ServicePackage[] = [
+export const MLH_ACCREDITATION = {
+  badge: 'The Official MLH Tag Guarantee',
+  headline: 'The Coveted MLH Official Sanctioning. Secured for Your Event.',
+  subheading: 'Major League Hacking (MLH) member season status is the pinnacle of global hackathon prestige—secured by fewer than 2% of collegiate events worldwide. VOYAGE engineers full compliance and guarantees your event the official MLH accreditation tag.',
+  stats: [
+    { label: 'Global Acceptance Rate', value: '< 2%', note: 'Elite collegiate accreditation' },
+    { label: 'MLH Hardware Lab', value: 'Included', note: 'VR, IoT kits & test devices shipped' },
+    { label: 'Global Season Points', value: 'Official', note: 'Attracts top-tier international builders' },
+    { label: 'Corporate Tech Sponsors', value: 'Tier-1', note: 'Direct access to GitHub, AWS, Google Cloud' },
+  ],
+  pillars: [
+    {
+      title: 'Official MLH Season Calendar Sanctioning',
+      description: 'Your institution or startup hackathon is formally inducted into the official MLH global circuit, placing your campus brand alongside legendary hackathons worldwide.',
+    },
+    {
+      title: 'MLH Hardware Lab & Exclusive Swag Drops',
+      description: 'We coordinate direct delivery of the official MLH Hardware Lab—Oculus headsets, microcontrollers, embedded sensors, and licensed partner merchandise.',
+    },
+    {
+      title: 'Global Tech Sponsor Gravitas',
+      description: 'Official MLH accreditation unlocks premier enterprise sponsor activations, subsidized developer API credits, and dedicated sponsor challenges.',
+    },
+    {
+      title: 'Zero Compliance Burden for Organizers',
+      description: 'VOYAGE manages the entire accreditation documentation, Code of Conduct enforcement, judging rubrics, and post-event audit compliance on your behalf.',
+    },
+  ],
+};
   {
     id: 'launch',
     name: 'Launch / Digital Setup',
@@ -67,6 +95,7 @@ export const PACKAGES: ServicePackage[] = [
     targetAudience: 'University fests, engineering colleges, institutional hackathon committees, and state innovation councils.',
     scopeSummary: 'Full-spectrum execution: hackathon theme concept, judging criteria rubric, portal setup, participant communications, mentor/judge pipeline, submission infrastructure, and 24-hour on-ground physical operations.',
     deliverables: [
+      'Official Major League Hacking (MLH) member season accreditation tag',
       'End-to-end hackathon blueprint, rulebook & problem statement tracks',
       'Project submission, code repository tracking & automated screening',
       'Multi-round judging portal setup, scoring rubrics & live leaderboard',

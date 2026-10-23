@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowRight, Sparkles, Building2, Award, Users, CheckCircle2, XCircle } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Sparkles, Award, ShieldCheck, Check } from 'lucide-react';
 import { VoyageLogo } from './VoyageLogo';
 import { VOYAGE_META } from '../data/blueprintData';
 
@@ -16,32 +16,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onReplayIntro,
   onNavigate,
 }) => {
-  const [activeView, setActiveView] = useState<'turnkey' | 'painpoints'>('turnkey');
-
   return (
     <section id="hero" className="relative min-h-[92vh] flex flex-col justify-center bg-black overflow-hidden border-b border-white/10">
       {/* Subtle Architectural Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
       
       {/* Ambient Radial Monochrome Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] sm:w-[1100px] h-[500px] bg-white/[0.03] blur-3xl rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] sm:w-[1200px] h-[550px] bg-white/[0.03] blur-3xl rounded-full pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 flex flex-col items-center text-center">
-        {/* Editorial Sub-Header Kicker */}
-        <div className="inline-flex items-center space-x-3 mb-10 px-4 py-1.5 rounded-full border border-white/15 bg-zinc-950/80 backdrop-blur-md">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-36 flex flex-col items-center text-center">
+        {/* Minimal Luxury Editorial Kicker */}
+        <div className="inline-flex items-center space-x-3 mb-8 px-4 py-1.5 rounded-full border border-white/15 bg-zinc-950/80 backdrop-blur-md">
           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-          <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-zinc-300">
-            {VOYAGE_META.legalDomain} • COMPLETE TURNKEY PRODUCTION
+          <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-zinc-300">
+            VOYAGE • ARCHITECTURAL EVENT ENGINEERING
           </span>
         </div>
 
         {/* Code-Generated 3D Blade Logo with Continuous Specular Light Flow */}
         <div 
           onClick={onReplayIntro}
-          className="relative mb-10 group cursor-pointer"
+          className="relative mb-8 group cursor-pointer"
           title="Click to replay the V-Light laser intro"
         >
-          <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-zinc-950 border border-white/20 p-2 shadow-2xl relative overflow-hidden group-hover:border-white transition-all duration-500 group-hover:scale-105 flex items-center justify-center">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-zinc-950 border border-white/20 p-2 shadow-2xl relative overflow-hidden group-hover:border-white transition-all duration-500 group-hover:scale-105 flex items-center justify-center">
             <VoyageLogo size="hero" animated={true} />
           </div>
           <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white text-black px-2.5 py-0.5 rounded text-[9px] font-mono uppercase font-bold tracking-widest whitespace-nowrap shadow-xl">
@@ -49,27 +47,41 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
         </div>
 
-        {/* Master Headline - Confirmed by User */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-black tracking-tight text-white uppercase max-w-5xl leading-[1.05] mb-8">
+        {/* Master Headline - High Performance Technical Events */}
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-black tracking-tight text-white uppercase max-w-5xl leading-[1.05] mb-6">
           High-Performance <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-500">
             Technical Events for Colleges & Startups
           </span>
         </h1>
 
-        {/* Polished Executive Subheading */}
-        <p className="max-w-3xl mx-auto text-base sm:text-xl text-zinc-400 font-normal leading-relaxed mb-12 font-sans">
-          From 24-hour campus hackathons to enterprise innovation sprints. 
-          VOYAGE delivers complete turnkey execution—<span className="text-white font-medium">venue staging, MLH-grade judging platforms, dual-band failover Wi-Fi, and an on-ground volunteer crew</span>—with immediate reach to 2,000+ developers through the GRID network.
-        </p>
+        {/* Luxury Brand Manifesto Quote */}
+        <div className="max-w-3xl mx-auto mb-8">
+          <p className="text-lg sm:text-2xl font-light text-zinc-200 italic font-sans tracking-wide leading-relaxed">
+            &ldquo;We believe in flawless delivery. Smooth, high-precision technical event engineering.&rdquo;
+          </p>
+          <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed mt-4 max-w-2xl mx-auto">
+            You provide the campus venue and institutional backing. VOYAGE secures the <span className="text-white font-medium">official MLH season tag</span>, constructs the physical and digital arena, and manages 24/7 on-ground operations with access to 2,000+ developers via GRID.
+          </p>
+        </div>
 
-        {/* Single-Line Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-20">
+        {/* MLH Tag Sanctioning Callout Badge */}
+        <div 
+          onClick={() => onNavigate('mlh-tag')}
+          className="inline-flex items-center space-x-2.5 mb-10 px-4 py-2 rounded-xl bg-zinc-950 border border-white/25 hover:border-white text-white font-mono text-xs cursor-pointer transition-all duration-300 group"
+        >
+          <Award className="w-4 h-4 text-white shrink-0 group-hover:rotate-12 transition-transform" />
+          <span className="font-bold uppercase tracking-wider">Official MLH Accreditation Tag Guaranteed</span>
+          <span className="text-zinc-500 text-[11px] group-hover:text-white transition-colors">→ Explore</span>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-16">
           <button
             onClick={onOpenRFP}
             className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white hover:bg-zinc-200 text-black font-mono font-bold text-xs uppercase tracking-widest transition-all duration-200 active:scale-95 shadow-xl shadow-white/10 flex items-center justify-center space-x-2.5 cursor-pointer"
           >
-            <span>Discuss Your Event</span>
+            <span>Host an Event</span>
             <ArrowRight className="w-4 h-4" />
           </button>
 
@@ -78,172 +90,56 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             className="w-full sm:w-auto px-7 py-4 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 text-white border border-white/20 hover:border-white/40 font-mono text-xs uppercase tracking-wider transition-all duration-200 active:scale-95 flex items-center justify-center space-x-2.5 cursor-pointer"
           >
             <Sparkles className="w-4 h-4 text-zinc-400" />
-            <span>Generate Statement of Work (SOW)</span>
+            <span>SOW Cost Estimator</span>
           </button>
         </div>
 
-        {/* The Turnkey Execution Architecture vs Organizer Chaos */}
-        <div className="w-full max-w-5xl bg-zinc-950 border border-white/15 rounded-3xl p-6 sm:p-10 text-left shadow-2xl relative overflow-hidden">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-5 mb-8 gap-4">
-            <div>
-              <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-zinc-400 block mb-1">
-                The Turnkey Delivery Framework
-              </span>
-              <h3 className="text-xl font-display font-bold text-white uppercase tracking-tight">
-                How VOYAGE Eliminates Event Complexity
-              </h3>
+        {/* Clean Typographic Metrics - Spacious & Unboxed */}
+        <div className="w-full max-w-5xl pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center sm:text-left">
+          <div className="border-l sm:border-l-0 pl-4 sm:pl-0 border-white/10">
+            <div className="text-2xl sm:text-3xl font-display font-black text-white tracking-tight">
+              Official MLH Tag
             </div>
-
-            {/* Segmented Switcher */}
-            <div className="flex items-center space-x-1 p-1 bg-black rounded-xl border border-white/10">
-              <button
-                onClick={() => setActiveView('turnkey')}
-                className={`px-4 py-2 rounded-lg text-xs font-mono font-bold transition cursor-pointer ${
-                  activeView === 'turnkey'
-                    ? 'bg-white text-black shadow-md'
-                    : 'text-zinc-400 hover:text-white'
-                }`}
-              >
-                The VOYAGE Standard
-              </button>
-              <button
-                onClick={() => setActiveView('painpoints')}
-                className={`px-4 py-2 rounded-lg text-xs font-mono transition cursor-pointer ${
-                  activeView === 'painpoints'
-                    ? 'bg-zinc-800 text-white'
-                    : 'text-zinc-500 hover:text-white'
-                }`}
-              >
-                Traditional In-House Burden
-              </button>
+            <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mt-1">
+              Guaranteed Sanctioning
             </div>
+            <p className="text-[11px] text-zinc-500 mt-1">
+              Top 2% global hackathon status
+            </p>
           </div>
 
-          {activeView === 'turnkey' ? (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono text-xs">
-              <div className="p-6 rounded-2xl bg-black border border-white/10 space-y-3">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider block">Phase 01</span>
-                <h4 className="text-base font-display font-bold text-white uppercase">
-                  Institutional Mandate
-                </h4>
-                <p className="text-zinc-400 font-sans text-xs leading-relaxed">
-                  You establish the event goals, confirm dates, and approve the transparent scope. Your committee avoids endless operational friction.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-2xl bg-black border border-white/30 ring-1 ring-white/20 space-y-3 relative">
-                <div className="absolute top-3 right-3 text-[9px] bg-white text-black font-bold px-2 py-0.5 rounded uppercase">
-                  Turnkey
-                </div>
-                <span className="text-[10px] text-zinc-400 uppercase tracking-wider block font-bold">Phase 02 • VOYAGE</span>
-                <h4 className="text-base font-display font-bold text-white uppercase">
-                  Full Operations Engine
-                </h4>
-                <p className="text-zinc-400 font-sans text-xs leading-relaxed">
-                  We engineer the venue layout, configure dual-band failover Wi-Fi, deploy automated judging portals, and manage 24/7 volunteer shifts.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-2xl bg-black border border-white/10 space-y-3">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-wider block">Phase 03</span>
-                <h4 className="text-base font-display font-bold text-white uppercase">
-                  Prestige & Outcomes
-                </h4>
-                <p className="text-zinc-400 font-sans text-xs leading-relaxed">
-                  Take the stage for keynote remarks, network with corporate sponsors, and celebrate verified technical deliverables with zero logistical fatigue.
-                </p>
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono text-xs">
-              <div className="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3 opacity-80">
-                <div className="flex items-center space-x-2 text-zinc-400 text-[10px] uppercase font-bold">
-                  <XCircle className="w-3.5 h-3.5 text-zinc-500" />
-                  <span>Connectivity Collapse</span>
-                </div>
-                <h4 className="text-base font-display font-bold text-white uppercase">
-                  Network & Server Outages
-                </h4>
-                <p className="text-zinc-400 font-sans text-xs leading-relaxed">
-                  Standard campus routers overload under 300+ concurrent developers, causing failed project submissions and frustrated participants.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3 opacity-80">
-                <div className="flex items-center space-x-2 text-zinc-400 text-[10px] uppercase font-bold">
-                  <XCircle className="w-3.5 h-3.5 text-zinc-500" />
-                  <span>Deliberation Bottlenecks</span>
-                </div>
-                <h4 className="text-base font-display font-bold text-white uppercase">
-                  Disorganized Judging
-                </h4>
-                <p className="text-zinc-400 font-sans text-xs leading-relaxed">
-                  Ad-hoc spreadsheets, missing code repositories, and subjective deliberations delay awards ceremonies into early morning hours.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3 opacity-80">
-                <div className="flex items-center space-x-2 text-zinc-400 text-[10px] uppercase font-bold">
-                  <XCircle className="w-3.5 h-3.5 text-zinc-500" />
-                  <span>Organizer Burnout</span>
-                </div>
-                <h4 className="text-base font-display font-bold text-white uppercase">
-                  Volunteer Exhaustion
-                </h4>
-                <p className="text-zinc-400 font-sans text-xs leading-relaxed">
-                  Student committees manage registration queues, catering logistics, and sponsor deliverables without standard operating procedures.
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Clean Typographic Metrics - Spacious & Unboxed */}
-        <div className="w-full max-w-5xl mt-20 pt-12 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-10 text-left">
-          <div>
-            <div className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
+          <div className="border-l pl-4 border-white/10">
+            <div className="text-2xl sm:text-3xl font-display font-black text-white tracking-tight">
               2,000+
             </div>
-            <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mt-1.5">
+            <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mt-1">
               Active Builders (GRID)
             </div>
-            <p className="text-[11px] text-zinc-500 mt-1 leading-snug">
+            <p className="text-[11px] text-zinc-500 mt-1">
               Pre-seeded developer distribution
             </p>
           </div>
 
-          <div>
-            <div className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
-              Zero
+          <div className="border-l pl-4 border-white/10">
+            <div className="text-2xl sm:text-3xl font-display font-black text-white tracking-tight">
+              Zero Drops
             </div>
-            <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mt-1.5">
+            <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mt-1">
               Wi-Fi / Network Downtime
             </div>
-            <p className="text-[11px] text-zinc-500 mt-1 leading-snug">
+            <p className="text-[11px] text-zinc-500 mt-1">
               Dual-band multi-WAN failover
             </p>
           </div>
 
-          <div>
-            <div className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
-              MLH Grade
-            </div>
-            <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mt-1.5">
-              Judging Workflows
-            </div>
-            <p className="text-[11px] text-zinc-500 mt-1 leading-snug">
-              Automated GitHub repo checks
-            </p>
-          </div>
-
-          <div>
-            <div className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
+          <div className="border-l pl-4 border-white/10">
+            <div className="text-2xl sm:text-3xl font-display font-black text-white tracking-tight">
               100%
             </div>
-            <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mt-1.5">
-              Turnkey Accountability
+            <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mt-1">
+              Turnkey Production
             </div>
-            <p className="text-[11px] text-zinc-500 mt-1 leading-snug">
+            <p className="text-[11px] text-zinc-500 mt-1">
               Venue, volunteers & execution
             </p>
           </div>

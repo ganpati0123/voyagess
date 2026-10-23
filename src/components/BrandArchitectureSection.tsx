@@ -38,7 +38,7 @@ export const BrandArchitectureSection: React.FC = () => {
                   <h3 className="text-xl font-display font-bold text-white uppercase tracking-wider">
                     VOYAGE
                   </h3>
-                  <span className="text-xs font-mono text-zinc-400">voyagehacks.in</span>
+                  <span className="text-xs font-mono text-zinc-400">The Execution Company</span>
                 </div>
               </div>
               <span className="text-[10px] font-mono uppercase tracking-wider bg-white text-black font-bold px-2.5 py-1 rounded">
@@ -126,32 +126,32 @@ export const BrandArchitectureSection: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
             <div className="p-4 rounded-xl bg-black border border-white/10 space-y-1">
-              <span className="text-[10px] text-zinc-500 uppercase block">Main Website</span>
-              <span className="text-white font-bold block">voyagehacks.in</span>
+              <span className="text-[10px] text-zinc-500 uppercase block">Digital Presence</span>
+              <span className="text-white font-bold block">VOYAGE Platform</span>
               <p className="text-[11px] text-zinc-400 font-sans">
-                Official commercial face with services, pricing SOW, and discovery intake.
+                Official commercial portal with event packages, pricing SOW, and discovery intake.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-black border border-white/10 space-y-1">
               <span className="text-[10px] text-zinc-500 uppercase block">WhatsApp Hub</span>
-              <span className="text-white font-bold block">2,000+ Members</span>
+              <span className="text-white font-bold block">2,000+ Builders</span>
               <p className="text-[11px] text-zinc-400 font-sans">
-                Kept pure & authentic. Zero restructuring. Peer-to-peer technical help.
+                Kept pure & authentic. Zero spam. Organic peer-to-peer developer distribution.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-black border border-white/10 space-y-1">
-              <span className="text-[10px] text-zinc-500 uppercase block">Instagram & X</span>
-              <span className="text-white font-bold block">@voyagehacks</span>
+              <span className="text-[10px] text-zinc-500 uppercase block">Media & Highlights</span>
+              <span className="text-white font-bold block">VOYAGE Studio</span>
               <p className="text-[11px] text-zinc-400 font-sans">
-                High-voltage event trailers, 4K photo drops, and hackathon highlights.
+                High-voltage event trailers, 4K photo drops, and hackathon recap reels.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-black border border-white/10 space-y-1">
-              <span className="text-[10px] text-zinc-500 uppercase block">LinkedIn</span>
-              <span className="text-white font-bold block">Dedicated B2B Page</span>
+              <span className="text-[10px] text-zinc-500 uppercase block">Corporate Network</span>
+              <span className="text-white font-bold block">Enterprise Partnerships</span>
               <p className="text-[11px] text-zinc-400 font-sans">
                 Case studies, corporate sponsorship deliverables, and institutional reports.
               </p>

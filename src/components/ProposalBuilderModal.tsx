@@ -137,7 +137,7 @@ export const ProposalBuilderModal: React.FC<ProposalBuilderModalProps> = ({
                   </div>
                   <div>
                     <h1 className="text-2xl font-display font-black text-white tracking-wider">VOYAGE</h1>
-                    <p className="text-zinc-400 text-xs">{VOYAGE_META.legalDomain}</p>
+                    <p className="text-zinc-400 text-xs">Architectural Event Engineering</p>
                   </div>
                 </div>
                 <div className="text-right">
