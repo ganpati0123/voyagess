@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X, Award } from 'lucide-react';
 import { VoyageLogo } from './VoyageLogo';
 import { VOYAGE_META } from '../data/blueprintData';
 
@@ -19,30 +19,30 @@ export const Header: React.FC<HeaderProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/10 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-8 h-20">
-          {/* Zone 1: Single Brand Wordmark & Logo */}
+    <header className="sticky top-0 z-40 bg-black/80 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-all">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-8 h-16 sm:h-18">
+          {/* Zone 1: Brand Wordmark & Animated Glowing Logo */}
           <div 
             onClick={() => { onNavigate('hero'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="flex items-center space-x-3 cursor-pointer group shrink-0"
+            className="flex items-center space-x-2.5 cursor-pointer group shrink-0"
           >
-            <div className="w-8 h-8 rounded-lg bg-zinc-950 border border-white/20 p-1 flex items-center justify-center group-hover:border-white transition-colors duration-300">
+            <div className="w-8 h-8 rounded-lg bg-zinc-950 border border-white/25 p-1 flex items-center justify-center group-hover:border-white transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_25px_rgba(255,255,255,0.35)]">
               <VoyageLogo size="xs" animated={true} />
             </div>
-            <span className="text-xl font-display font-black tracking-widest text-white uppercase whitespace-nowrap">
+            <span className="text-lg sm:text-xl font-display font-black tracking-widest text-white uppercase whitespace-nowrap text-glow">
               {VOYAGE_META.name}
             </span>
           </div>
 
           {/* Zone 2: 4-5 Clean Single-Line Nav Links */}
-          <nav className="hidden md:flex items-center space-x-8 text-xs font-mono tracking-wider uppercase text-zinc-400">
+          <nav className="hidden md:flex items-center space-x-7 text-xs font-mono tracking-wider uppercase text-zinc-400">
             <button
               onClick={() => onNavigate('mlh-tag')}
-              className="hover:text-white transition-colors cursor-pointer whitespace-nowrap flex items-center space-x-1.5"
+              className="hover:text-white transition-colors cursor-pointer whitespace-nowrap flex items-center space-x-1.5 text-zinc-200"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
-              <span>Official MLH Tag</span>
+              <Award className="w-3.5 h-3.5 text-white" />
+              <span className="font-bold">Official MLH Tag</span>
             </button>
             <button
               onClick={() => onNavigate('turnkey')}
@@ -74,14 +74,14 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="hidden sm:flex items-center space-x-3 shrink-0">
             <button
               onClick={onOpenCalculator}
-              className="px-4 py-2 rounded-xl text-xs font-mono text-zinc-300 hover:text-white border border-white/15 hover:border-white/30 transition-colors cursor-pointer whitespace-nowrap"
+              className="px-3.5 py-1.5 rounded-xl text-xs font-mono text-zinc-300 hover:text-white glow-badge hover:border-white/50 transition-colors cursor-pointer whitespace-nowrap"
             >
               SOW Estimator
             </button>
 
             <button
               onClick={onOpenRFP}
-              className="px-5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all active:scale-95 cursor-pointer flex items-center space-x-1.5 shadow-lg shadow-white/5 whitespace-nowrap"
+              className="px-4 py-2 rounded-xl text-xs font-mono font-extrabold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all active:scale-95 cursor-pointer flex items-center space-x-1.5 shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] whitespace-nowrap"
             >
               <span>Request Proposal</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -92,13 +92,13 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex md:hidden items-center space-x-2">
             <button
               onClick={onOpenRFP}
-              className="px-3.5 py-1.5 rounded-lg text-[11px] font-mono font-bold uppercase bg-white text-black whitespace-nowrap"
+              className="px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold uppercase bg-white text-black whitespace-nowrap shadow-md"
             >
               Proposal
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-zinc-400 hover:text-white"
+              className="p-1.5 text-zinc-400 hover:text-white"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -109,14 +109,17 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-zinc-950 border-b border-white/10 px-6 py-6 space-y-4 text-xs font-mono uppercase tracking-wider">
-          <div className="flex flex-col space-y-3">
+        <div className="md:hidden bg-zinc-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-5 space-y-4 text-xs font-mono uppercase tracking-wider">
+          <div className="flex flex-col space-y-2.5">
             <button
               onClick={() => { onNavigate('mlh-tag'); setMobileMenuOpen(false); }}
               className="text-left py-2 text-white font-bold border-b border-zinc-900 flex items-center justify-between"
             >
-              <span>Official MLH Tag Guarantee</span>
-              <span className="text-[10px] text-zinc-400 border border-white/20 px-2 py-0.5 rounded">USP</span>
+              <span className="flex items-center space-x-1.5">
+                <Award className="w-4 h-4 text-white" />
+                <span>OFFICIAL MLH TAG GUARANTEE</span>
+              </span>
+              <span className="text-[10px] bg-white text-black font-bold px-2 py-0.5 rounded-full">USP</span>
             </button>
             <button
               onClick={() => { onNavigate('turnkey'); setMobileMenuOpen(false); }}
@@ -153,7 +156,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             <button
               onClick={() => { onOpenRFP(); setMobileMenuOpen(false); }}
-              className="w-full py-2.5 rounded-lg bg-white text-black font-mono font-bold text-center uppercase"
+              className="w-full py-2.5 rounded-lg bg-white text-black font-mono font-bold text-center uppercase shadow-md"
             >
               Request Proposal
             </button>

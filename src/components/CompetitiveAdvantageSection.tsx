@@ -4,26 +4,28 @@ import { COMPETITIVE_MATRIX } from '../data/blueprintData';
 
 export const CompetitiveAdvantageSection: React.FC = () => {
   return (
-    <section id="matrix" className="py-28 bg-black border-b border-white/10 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="matrix" className="py-16 sm:py-20 bg-black border-b border-white/10 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-400 mb-3">
+        <div className="max-w-3xl mb-12">
+          <div className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 mb-2">
             Strategic Distinction
           </div>
-          <h2 className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight uppercase">
+          <h2 className="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight uppercase text-glow">
             Why Traditional Alternatives <br />
-            <span className="text-zinc-500">Break Down at Scale.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
+              Break Down at Scale.
+            </span>
           </h2>
-          <p className="text-sm text-zinc-400 mt-4 leading-relaxed font-sans">
+          <p className="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed font-sans">
             The market does not need another generic event vendor or passive submission form. 
             VOYAGE bridges the fatal gap between online developer discovery and relentless physical execution.
           </p>
         </div>
 
-        {/* Matrix Comparison Table */}
-        <div className="border border-white/15 rounded-3xl overflow-hidden bg-zinc-950 shadow-2xl">
-          <div className="grid grid-cols-1 md:grid-cols-12 bg-black border-b border-white/10 p-5 text-xs font-mono uppercase tracking-wider text-zinc-400 font-bold hidden md:grid">
+        {/* Matrix Comparison Table with Glowmorphism */}
+        <div className="glow-card border-white/15 rounded-3xl overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+          <div className="grid grid-cols-1 md:grid-cols-12 bg-black/80 border-b border-white/10 p-4 text-xs font-mono uppercase tracking-wider text-zinc-400 font-bold hidden md:grid">
             <div className="md:col-span-3">Alternative Provider</div>
             <div className="md:col-span-4">Where They Stall</div>
             <div className="md:col-span-5 text-white">The VOYAGE Standard</div>
@@ -33,14 +35,14 @@ export const CompetitiveAdvantageSection: React.FC = () => {
             {COMPETITIVE_MATRIX.map((item, idx) => (
               <div
                 key={idx}
-                className="grid grid-cols-1 md:grid-cols-12 p-6 md:p-5 gap-4 items-center hover:bg-zinc-900/40 transition"
+                className="grid grid-cols-1 md:grid-cols-12 p-5 gap-3 items-center hover:bg-zinc-900/40 transition"
               >
                 {/* Alternative */}
                 <div className="md:col-span-3">
                   <span className="text-xs font-mono text-zinc-400 uppercase md:hidden block mb-1">
                     Alternative
                   </span>
-                  <h4 className="text-base font-display font-bold text-white uppercase">
+                  <h4 className="text-sm sm:text-base font-display font-bold text-white uppercase text-glow">
                     {item.entity}
                   </h4>
                   <span className="text-xs text-zinc-400 block mt-0.5">
@@ -64,7 +66,7 @@ export const CompetitiveAdvantageSection: React.FC = () => {
                   <span className="text-[10px] font-mono text-white uppercase md:hidden block mb-1 font-bold">
                     VOYAGE Advantage
                   </span>
-                  <div className="flex items-start space-x-2.5 bg-black/60 p-3 rounded-xl border border-white/10">
+                  <div className="flex items-start space-x-2 bg-black/70 p-3 rounded-xl border border-white/15 glow-card">
                     <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />
                     <span className="font-medium text-white">{item.voyageAdvantage}</span>
                   </div>
@@ -74,19 +76,19 @@ export const CompetitiveAdvantageSection: React.FC = () => {
           </div>
         </div>
 
-        {/* The Core Proposition Box (Section 2.1 of PDF) */}
-        <div className="mt-12 p-8 rounded-3xl bg-zinc-950 border border-white/20 flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* The Core Proposition Box */}
+        <div className="mt-8 p-6 rounded-2xl glow-card-featured border-white/20 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="max-w-2xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-400 block mb-1">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 block mb-1">
               Core Brand Proposition
             </span>
-            <h3 className="text-xl sm:text-2xl font-display font-bold text-white uppercase">
+            <p className="text-base sm:text-lg font-display font-bold text-white uppercase leading-snug">
               &ldquo;VOYAGE plans, promotes and executes technology-driven experiences—from campus hackathons and developer workshops to corporate innovation events.&rdquo;
-            </h3>
+            </p>
           </div>
-          <div className="shrink-0 text-right">
-            <span className="text-xs font-mono text-zinc-400 block">Single Accountable Partner</span>
-            <span className="text-sm font-mono font-bold text-white">VOYAGE</span>
+          <div className="shrink-0 text-left md:text-right">
+            <span className="text-[10px] font-mono text-zinc-400 block">Single Accountable Partner</span>
+            <span className="text-xs font-mono font-bold text-white">VOYAGE (White-Glove)</span>
           </div>
         </div>
       </div>

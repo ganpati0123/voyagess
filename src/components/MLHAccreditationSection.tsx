@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, ShieldCheck, Check, ArrowRight } from 'lucide-react';
+import { Award, ShieldCheck, Check, ArrowRight, Sparkles } from 'lucide-react';
 import { MLH_ACCREDITATION } from '../data/blueprintData';
 
 interface MLHAccreditationSectionProps {
@@ -12,41 +12,41 @@ export const MLHAccreditationSection: React.FC<MLHAccreditationSectionProps> = (
   onOpenCalculator,
 }) => {
   return (
-    <section id="mlh-tag" className="py-24 sm:py-32 bg-black border-b border-white/10 relative overflow-hidden">
-      {/* Background radial accent glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[400px] bg-white/[0.02] blur-3xl rounded-full pointer-events-none"></div>
+    <section id="mlh-tag" className="py-16 sm:py-20 bg-black border-b border-white/10 relative overflow-hidden">
+      {/* Background radial glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[900px] h-[300px] bg-white/[0.04] blur-[90px] rounded-full pointer-events-none animate-glow-pulse"></div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Luxury Tagline & Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 mb-4">
+        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-14">
+          <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-[0.2em] text-white mb-3 glow-badge-mlh px-4 py-1.5 rounded-full">
             <Award className="w-4 h-4 text-white" />
-            <span>The Crown Jewel Advantage</span>
+            <span className="font-bold">THE CROWN JEWEL GUARANTEE</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight uppercase leading-[1.08] mb-6">
-            The Coveted Official MLH Tag. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-500">
-              Guaranteed for Your Event.
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-black text-white tracking-tight uppercase leading-[1.1] mb-4 text-glow">
+            OFFICIAL MLH TAG <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
+              FOR YOUR HACKATHON EVENT.
             </span>
           </h2>
 
-          <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed max-w-2xl mx-auto">
-            Major League Hacking (MLH) member season status is the gold standard of collegiate hackathon prestige—awarded to fewer than 2% of events globally. VOYAGE manages the entire accreditation protocol and delivers official sanctioning for your campus.
+          <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed max-w-2xl mx-auto">
+            Major League Hacking (MLH) member season sanctioning is the most prestigious badge in developer competitions—awarded to fewer than 2% of collegiate events worldwide. VOYAGE manages end-to-end compliance, paperwork, and technical verification to secure your official status.
           </p>
         </div>
 
-        {/* 4 Stat Highlights */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16 max-w-5xl mx-auto">
+        {/* 4 Stat Highlights with Glowmorphism */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10 max-w-5xl mx-auto">
           {MLH_ACCREDITATION.stats.map((stat, i) => (
             <div
               key={i}
-              className="bg-zinc-950/80 border border-white/10 rounded-2xl p-6 text-center hover:border-white/30 transition-all duration-300"
+              className="glow-card rounded-2xl p-5 text-center border-white/15"
             >
-              <div className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight mb-1 tabular-nums">
+              <div className="text-2xl sm:text-3xl font-display font-black text-white tracking-tight mb-1 tabular-nums text-glow">
                 {stat.value}
               </div>
-              <div className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-bold mb-1">
+              <div className="text-xs font-mono uppercase tracking-wider text-zinc-200 font-bold mb-0.5">
                 {stat.label}
               </div>
               <p className="text-[11px] text-zinc-500 font-sans leading-tight">
@@ -57,54 +57,53 @@ export const MLHAccreditationSection: React.FC<MLHAccreditationSectionProps> = (
         </div>
 
         {/* The 4 MLH Strategic Advantages */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto mb-10">
           {MLH_ACCREDITATION.pillars.map((pillar, idx) => (
             <div
               key={idx}
-              className="p-8 rounded-3xl bg-zinc-950/60 border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col justify-between"
+              className="glow-card p-6 sm:p-7 rounded-2xl border-white/15 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center space-x-3 mb-4">
-                  <span className="text-xs font-mono uppercase tracking-widest text-zinc-500 font-semibold">
+                <div className="flex items-center space-x-2.5 mb-3">
+                  <span className="text-xs font-mono font-bold text-white bg-white/10 px-2 py-0.5 rounded border border-white/20">
                     {pillar.number}
                   </span>
-                  <span className="text-xs text-zinc-700">·</span>
                   <span className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-semibold">
-                    Strategic Pillar
+                    MLH Strategic Advantage
                   </span>
                 </div>
-                <h3 className="text-lg font-display font-bold text-white uppercase mb-2">
+                <h3 className="text-base sm:text-lg font-display font-bold text-white uppercase mb-2">
                   {pillar.title}
                 </h3>
-                <p className="text-sm text-zinc-400 font-sans leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
                   {pillar.description}
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-white/5 flex items-center space-x-2 text-xs font-mono text-zinc-400">
+              <div className="pt-4 mt-5 border-t border-white/10 flex items-center space-x-2 text-xs font-mono text-zinc-300">
                 <Check className="w-3.5 h-3.5 text-white shrink-0" />
-                <span>100% Turnkey Handled by VOYAGE</span>
+                <span>100% Turnkey Compliance by VOYAGE</span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Minimal Editorial Callout */}
-        <div className="max-w-4xl mx-auto bg-zinc-950 border border-white/20 rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-2xl">
+        {/* Minimal Glowmorphism Editorial Callout */}
+        <div className="max-w-4xl mx-auto glow-card-featured border-white/25 rounded-3xl p-6 sm:p-8 shadow-[0_0_40px_rgba(255,255,255,0.08)]">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="max-w-xl text-center md:text-left">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-2">
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-1">
                 Executive Guarantee
               </span>
-              <p className="text-lg sm:text-xl font-display font-bold text-white uppercase leading-snug">
-                &ldquo;You provide the campus venue and student backing. VOYAGE brings the official MLH tag, judging architecture, and flawless on-ground delivery.&rdquo;
+              <p className="text-base sm:text-lg font-display font-bold text-white uppercase leading-snug">
+                &ldquo;You provide the campus venue and student backing. VOYAGE guarantees the official MLH tag, hardware labs, and flawless on-ground delivery.&rdquo;
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 shrink-0 font-mono text-xs w-full md:w-auto">
               <button
                 onClick={onOpenRFP}
-                className="px-6 py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-black font-bold uppercase tracking-wider transition-all active:scale-95 cursor-pointer flex items-center justify-center space-x-2 shadow-lg shadow-white/10"
+                className="px-6 py-3 rounded-xl bg-white hover:bg-zinc-200 text-black font-extrabold uppercase tracking-wider transition-all active:scale-95 cursor-pointer flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(255,255,255,0.25)]"
               >
                 <span>Secure MLH Sanctioning</span>
                 <ArrowRight className="w-3.5 h-3.5" />
