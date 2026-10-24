@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Menu, X, Award } from 'lucide-react';
+import { 
+  ArrowUpRight, Menu, X, Award, Briefcase, 
+  Compass, ShieldCheck, Sparkles 
+} from 'lucide-react';
 import { VoyageLogo } from './VoyageLogo';
 import { VOYAGE_META } from '../data/blueprintData';
 
 interface HeaderProps {
   onOpenRFP: () => void;
   onOpenCalculator: () => void;
+  onOpenCareers: (roleId?: string) => void;
+  onOpenSitemap: () => void;
+  onOpenDocument: (docId: string) => void;
   onReplayIntro: () => void;
   onNavigate: (sectionId: string) => void;
 }
@@ -13,15 +19,18 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   onOpenRFP,
   onOpenCalculator,
+  onOpenCareers,
+  onOpenSitemap,
+  onOpenDocument,
   onReplayIntro,
   onNavigate,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-black/80 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-all">
+    <header className="sticky top-0 z-40 bg-black/85 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-all">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-8 h-16 sm:h-18">
+        <div className="flex items-center justify-between gap-4 h-16 sm:h-18">
           {/* Zone 1: Brand Wordmark & Animated Glowing Logo */}
           <div 
             onClick={() => { onNavigate('hero'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
@@ -30,19 +39,19 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="w-8 h-8 rounded-lg bg-zinc-950 border border-white/25 p-1 flex items-center justify-center group-hover:border-white transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_25px_rgba(255,255,255,0.35)]">
               <VoyageLogo size="xs" animated={true} />
             </div>
-            <span className="text-lg sm:text-xl font-display font-black tracking-widest text-white uppercase whitespace-nowrap text-glow">
+            <span className="text-base sm:text-xl font-display font-black tracking-widest text-white uppercase whitespace-nowrap text-glow">
               {VOYAGE_META.name}
             </span>
           </div>
 
-          {/* Zone 2: 4-5 Clean Single-Line Nav Links */}
-          <nav className="hidden md:flex items-center space-x-7 text-xs font-mono tracking-wider uppercase text-zinc-400">
+          {/* Zone 2: Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-6 text-xs font-mono tracking-wider uppercase text-zinc-400">
             <button
               onClick={() => onNavigate('mlh-tag')}
               className="hover:text-white transition-colors cursor-pointer whitespace-nowrap flex items-center space-x-1.5 text-zinc-200"
             >
               <Award className="w-3.5 h-3.5 text-white" />
-              <span className="font-bold">Official MLH Tag</span>
+              <span className="font-bold">MLH Tag</span>
             </button>
             <button
               onClick={() => onNavigate('turnkey')}
@@ -66,7 +75,25 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => onNavigate('proof')}
               className="hover:text-white transition-colors cursor-pointer whitespace-nowrap"
             >
-              Audited Proof
+              Proof
+            </button>
+            <button
+              onClick={() => onOpenCareers()}
+              className="hover:text-white transition-colors cursor-pointer whitespace-nowrap flex items-center space-x-1.5 text-white"
+            >
+              <Briefcase className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Careers</span>
+              <span className="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-1.5 py-0.2 rounded-full font-bold">
+                Hiring
+              </span>
+            </button>
+            <button
+              onClick={onOpenSitemap}
+              className="hover:text-white transition-colors cursor-pointer whitespace-nowrap flex items-center space-x-1 text-zinc-400"
+              title="Full Sitemap & Directory"
+            >
+              <Compass className="w-3 h-3" />
+              <span>Sitemap</span>
             </button>
           </nav>
 
@@ -88,77 +115,122 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
 
-          {/* Mobile hamburger */}
-          <div className="flex md:hidden items-center space-x-2">
+          {/* Mobile hamburger & Quick proposal button */}
+          <div className="flex lg:hidden items-center space-x-2">
             <button
               onClick={onOpenRFP}
-              className="px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold uppercase bg-white text-black whitespace-nowrap shadow-md"
+              className="px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold uppercase bg-white text-black whitespace-nowrap shadow-md cursor-pointer active:scale-95"
             >
               Proposal
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 text-zinc-400 hover:text-white"
+              className="p-1.5 text-zinc-400 hover:text-white cursor-pointer rounded-lg hover:bg-zinc-900"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer - Enhanced with Careers, Sitemap, and High-Polish Touch Targets */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-zinc-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-5 space-y-4 text-xs font-mono uppercase tracking-wider">
-          <div className="flex flex-col space-y-2.5">
+        <div className="lg:hidden bg-zinc-950/98 backdrop-blur-3xl border-b border-white/10 px-5 sm:px-6 py-5 space-y-4 text-xs font-mono uppercase tracking-wider animate-in slide-in-from-top-2 duration-200 shadow-2xl">
+          <div className="flex flex-col space-y-1.5">
+            {/* Crown USP */}
             <button
               onClick={() => { onNavigate('mlh-tag'); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-white font-bold border-b border-zinc-900 flex items-center justify-between"
+              className="text-left py-2.5 px-2 text-white font-bold border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-lg transition"
             >
-              <span className="flex items-center space-x-1.5">
-                <Award className="w-4 h-4 text-white" />
-                <span>OFFICIAL MLH TAG GUARANTEE</span>
+              <span className="flex items-center space-x-2">
+                <Award className="w-4 h-4 text-white shrink-0" />
+                <span className="truncate">OFFICIAL MLH TAG GUARANTEE</span>
               </span>
-              <span className="text-[10px] bg-white text-black font-bold px-2 py-0.5 rounded-full">USP</span>
+              <span className="text-[9px] bg-white text-black font-bold px-2 py-0.5 rounded-full shrink-0">USP</span>
             </button>
+
+            {/* Core Sections */}
             <button
               onClick={() => { onNavigate('turnkey'); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900"
+              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-lg transition"
             >
               Turnkey Model
             </button>
             <button
               onClick={() => { onNavigate('packages'); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900"
+              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-lg transition"
             >
               Packages & Scope
             </button>
             <button
               onClick={() => { onNavigate('ecosystem'); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900"
+              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-lg transition"
             >
               GRID Community (2K+ Builders)
             </button>
             <button
               onClick={() => { onNavigate('proof'); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-zinc-300 hover:text-white border-b border-zinc-900"
+              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-lg transition"
             >
               Audited Proof
             </button>
+
+            {/* New Careers in Mobile Menu - Requested directly by user! */}
+            <button
+              onClick={() => { onOpenCareers(); setMobileMenuOpen(false); }}
+              className="text-left py-2.5 px-2 text-white font-bold border-b border-zinc-900 flex items-center justify-between bg-zinc-900/40 hover:bg-zinc-900 rounded-lg transition"
+            >
+              <span className="flex items-center space-x-2">
+                <Briefcase className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Careers & Flight Crew</span>
+              </span>
+              <span className="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>We&apos;re Hiring (5)</span>
+              </span>
+            </button>
+
+            {/* Normal Website Essentials: Full Sitemap Directory */}
+            <button
+              onClick={() => { onOpenSitemap(); setMobileMenuOpen(false); }}
+              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-lg transition"
+            >
+              <span className="flex items-center space-x-2">
+                <Compass className="w-4 h-4 text-zinc-400 shrink-0" />
+                <span>Full Website Sitemap</span>
+              </span>
+              <span className="text-[9px] text-zinc-400 font-mono">Directory</span>
+            </button>
+
+            {/* Legal & Trust Center */}
+            <button
+              onClick={() => { onOpenDocument('msa'); setMobileMenuOpen(false); }}
+              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-lg transition"
+            >
+              <span className="flex items-center space-x-2">
+                <ShieldCheck className="w-4 h-4 text-zinc-400 shrink-0" />
+                <span>Master Services Agreement (MSA)</span>
+              </span>
+              <span className="text-[9px] text-zinc-400 font-mono">Legal</span>
+            </button>
           </div>
 
+          {/* Action Buttons in Mobile Menu */}
           <div className="pt-2 flex flex-col space-y-2">
             <button
               onClick={() => { onOpenCalculator(); setMobileMenuOpen(false); }}
-              className="w-full py-2.5 rounded-lg bg-zinc-900 border border-white/20 text-white font-mono text-center"
+              className="w-full py-2.5 rounded-xl bg-zinc-900 border border-white/20 text-white font-mono text-center active:scale-98 transition flex items-center justify-center space-x-1.5 cursor-pointer"
             >
-              SOW Budget Estimator
+              <Sparkles className="w-3.5 h-3.5 text-zinc-400" />
+              <span>SOW Budget Estimator</span>
             </button>
             <button
               onClick={() => { onOpenRFP(); setMobileMenuOpen(false); }}
-              className="w-full py-2.5 rounded-lg bg-white text-black font-mono font-bold text-center uppercase shadow-md"
+              className="w-full py-2.5 rounded-xl bg-white text-black font-mono font-bold text-center uppercase shadow-md active:scale-98 transition flex items-center justify-center space-x-1.5 cursor-pointer"
             >
-              Request Proposal
+              <span>Request Proposal</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
