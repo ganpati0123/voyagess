@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { LogoIntro } from './components/LogoIntro';
 import { HeroSection } from './components/HeroSection';
@@ -15,8 +15,11 @@ import { GridCommunityModal } from './components/GridCommunityModal';
 import { CareersModal } from './components/CareersModal';
 import { SitemapModal } from './components/SitemapModal';
 import { DocumentViewerModal } from './components/DocumentViewerModal';
+import { ConsentPermissionsModal } from './components/ConsentPermissionsModal';
+import { ConsentTelemetryDossierModal } from './components/ConsentTelemetryDossierModal';
 import { Footer } from './components/Footer';
-import { ServiceTier, ProposalRequest } from './types';
+import { ServiceTier, ProposalRequest, ConsentPreferences } from './types';
+import { isConsentPermanentlyAccepted } from './utils/consentStorage';
 import { CheckCircle2, X } from 'lucide-react';
 
 export function App() {
@@ -30,6 +33,10 @@ export function App() {
   const [isDocViewerOpen, setIsDocViewerOpen] = useState(false);
   const [selectedDocId, setSelectedDocId] = useState<string>('msa');
 
+  // System-level permissions & cookies consent state
+  const [isConsentModalOpen, setIsConsentModalOpen] = useState(false);
+  const [isConsentDossierOpen, setIsConsentDossierOpen] = useState(false);
+
   const [selectedServiceForSOW, setSelectedServiceForSOW] = useState<ServiceTier>('hackathon');
   const [sowConfigData, setSowConfigData] = useState<{
     attendees?: number;
@@ -38,6 +45,19 @@ export function App() {
     estimatedTotal?: number;
   } | undefined>(undefined);
   const [recentRFP, setRecentRFP] = useState<ProposalRequest | null>(null);
+
+  // Check consent on mount.
+  // CRITICAL REQUIREMENT: If the user rejected non-essential permissions,
+  // isConsentPermanentlyAccepted() is FALSE, so on subsequent visits or reloads
+  // it prompts them again ("agr user reject krre toh wo baar show kre")!
+  useEffect(() => {
+    if (!isConsentPermanentlyAccepted()) {
+      const timer = setTimeout(() => {
+        setIsConsentModalOpen(true);
+      }, 900);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -79,6 +99,10 @@ export function App() {
     setIsDocViewerOpen(true);
   };
 
+  const handleConsentUpdated = (_consent: ConsentPreferences) => {
+    // State synchronized
+  };
+
   return (
     <div className="min-h-screen bg-[#030303] text-zinc-100 selection:bg-white selection:text-black flex flex-col font-sans relative overflow-x-hidden">
       {/* Interactive V-Logo Specular Flow Replay Modal */}
@@ -116,6 +140,7 @@ export function App() {
         onOpenCareers={handleOpenCareers}
         onOpenSitemap={() => setIsSitemapModalOpen(true)}
         onOpenDocument={handleOpenDocument}
+        onOpenConsentDossier={() => setIsConsentDossierOpen(true)}
         onReplayIntro={() => setShowLogoIntro(true)}
         onNavigate={scrollToSection}
       />
@@ -172,6 +197,7 @@ export function App() {
         onOpenCareers={handleOpenCareers}
         onOpenSitemap={() => setIsSitemapModalOpen(true)}
         onOpenDocument={handleOpenDocument}
+        onOpenConsentDossier={() => setIsConsentDossierOpen(true)}
         onNavigate={scrollToSection}
       />
 
@@ -225,6 +251,24 @@ export function App() {
         onClose={() => setIsDocViewerOpen(false)}
         initialDocId={selectedDocId}
         onOpenRFP={() => setIsRFPOpen(true)}
+      />
+
+      {/* System-Level Permissions, Cookies & Notification Consent Console */}
+      <ConsentPermissionsModal
+        isOpen={isConsentModalOpen}
+        onClose={() => setIsConsentModalOpen(false)}
+        onConsentUpdated={handleConsentUpdated}
+        onOpenDossier={() => {
+          setIsConsentModalOpen(false);
+          setIsConsentDossierOpen(true);
+        }}
+      />
+
+      {/* Cryptographic Client Consent & Telemetry Dossier Modal */}
+      <ConsentTelemetryDossierModal
+        isOpen={isConsentDossierOpen}
+        onClose={() => setIsConsentDossierOpen(false)}
+        onReopenPrompt={() => setIsConsentModalOpen(true)}
       />
     </div>
   );

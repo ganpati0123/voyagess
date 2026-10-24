@@ -27,8 +27,8 @@ export const CareersSection: React.FC<CareersSectionProps> = ({
               <Briefcase className="w-3.5 h-3.5 text-white" />
               <span>VOYAGE FLIGHT CREW · RECRUITMENT</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-black text-white tracking-tight uppercase leading-[1.1] mb-3 text-glow">
-              Engineered by Builders. <br />
+            <h2 className="text-xl min-[360px]:text-2xl sm:text-4xl lg:text-5xl font-display font-black text-white tracking-tight uppercase leading-[1.2] sm:leading-[1.1] mb-3 text-glow">
+              Engineered by Builders. <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
                 Join the High-Impact Crew.
               </span>

@@ -75,3 +75,27 @@ export interface ProposalRequest {
   specialRequirements: string;
   createdAt: string;
 }
+
+export interface DeviceAuditInfo {
+  browser: string;
+  os: string;
+  resolution: string;
+  language: string;
+  timezone: string;
+  hardwareConcurrency?: number;
+  connectionType?: string;
+}
+
+export interface ConsentPreferences {
+  clientId: string;
+  status: 'accepted_all' | 'rejected_strict' | 'customized';
+  essential: boolean; // Always true
+  notifications: boolean;
+  telemetryAndCache: boolean;
+  eventProposalStorage: boolean;
+  notificationPermissionState: 'granted' | 'denied' | 'default' | 'unsupported';
+  deviceAudit: DeviceAuditInfo;
+  timestamp: string;
+  lastUpdated: string;
+}
+

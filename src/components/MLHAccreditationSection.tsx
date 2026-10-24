@@ -24,8 +24,8 @@ export const MLHAccreditationSection: React.FC<MLHAccreditationSectionProps> = (
             <span className="font-bold">THE CROWN JEWEL GUARANTEE</span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-black text-white tracking-tight uppercase leading-[1.1] mb-4 text-glow">
-            OFFICIAL MLH TAG <br />
+          <h2 className="text-xl min-[360px]:text-2xl sm:text-4xl lg:text-5xl font-display font-black text-white tracking-tight uppercase leading-[1.2] sm:leading-[1.1] mb-4 text-glow break-normal">
+            OFFICIAL MLH TAG <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
               FOR YOUR HACKATHON EVENT.
             </span>

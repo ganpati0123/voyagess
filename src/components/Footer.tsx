@@ -13,6 +13,7 @@ interface FooterProps {
   onOpenCareers: (roleId?: string) => void;
   onOpenSitemap: () => void;
   onOpenDocument: (docId: string) => void;
+  onOpenConsentDossier: () => void;
   onNavigate: (id: string) => void;
 }
 
@@ -23,6 +24,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenCareers,
   onOpenSitemap,
   onOpenDocument,
+  onOpenConsentDossier,
   onNavigate,
 }) => {
   return (
@@ -233,6 +235,12 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
+                <button onClick={onOpenConsentDossier} className="hover:text-white transition cursor-pointer text-left flex items-center space-x-1.5 text-zinc-300 font-medium">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Cookie & Permissions Hub</span>
+                </button>
+              </li>
+              <li>
                 <button 
                   onClick={onOpenSitemap} 
                   className="hover:text-white transition cursor-pointer text-left text-white font-bold flex items-center space-x-1"
@@ -259,6 +267,11 @@ export const Footer: React.FC<FooterProps> = ({
             <span className="text-zinc-700">·</span>
             <button onClick={() => onOpenDocument('code-of-conduct')} className="hover:text-zinc-300">
               Code of Conduct
+            </button>
+            <span className="text-zinc-700">·</span>
+            <button onClick={onOpenConsentDossier} className="hover:text-white text-zinc-300 flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3 text-emerald-400" />
+              <span>Cookies & Permissions</span>
             </button>
             <span className="text-zinc-700">·</span>
             <button onClick={() => onOpenCareers()} className="hover:text-white text-emerald-400 font-semibold">

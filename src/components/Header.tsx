@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ArrowUpRight, Menu, X, Award, Briefcase, 
-  Compass, ShieldCheck, Sparkles 
+  Compass, ShieldCheck, Sparkles, Mail, ChevronRight 
 } from 'lucide-react';
 import { VoyageLogo } from './VoyageLogo';
 import { VOYAGE_META } from '../data/blueprintData';
@@ -12,6 +12,7 @@ interface HeaderProps {
   onOpenCareers: (roleId?: string) => void;
   onOpenSitemap: () => void;
   onOpenDocument: (docId: string) => void;
+  onOpenConsentDossier: () => void;
   onReplayIntro: () => void;
   onNavigate: (sectionId: string) => void;
 }
@@ -22,18 +23,36 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenCareers,
   onOpenSitemap,
   onOpenDocument,
+  onOpenConsentDossier,
   onReplayIntro,
   onNavigate,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Prevent background scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
+  const handleNavClick = (sectionId: string) => {
+    setMobileMenuOpen(false);
+    onNavigate(sectionId);
+  };
+
   return (
-    <header className="sticky top-0 z-40 bg-black/85 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-all">
+    <header className="sticky top-0 z-40 bg-black/90 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-all">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4 h-16 sm:h-18">
+        <div className="flex items-center justify-between gap-3 h-16 sm:h-18">
           {/* Zone 1: Brand Wordmark & Animated Glowing Logo */}
           <div 
-            onClick={() => { onNavigate('hero'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            onClick={() => { handleNavClick('hero'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             className="flex items-center space-x-2.5 cursor-pointer group shrink-0"
           >
             <div className="w-8 h-8 rounded-lg bg-zinc-950 border border-white/25 p-1 flex items-center justify-center group-hover:border-white transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_25px_rgba(255,255,255,0.35)]">
@@ -125,113 +144,154 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 text-zinc-400 hover:text-white cursor-pointer rounded-lg hover:bg-zinc-900"
+              className="p-2 text-zinc-400 hover:text-white cursor-pointer rounded-lg hover:bg-zinc-900 border border-white/10"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-zinc-200" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer - Enhanced with Careers, Sitemap, and High-Polish Touch Targets */}
+      {/* Full-Height Mobile Drawer - Locks Background & Solves Mobile UX */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-zinc-950/98 backdrop-blur-3xl border-b border-white/10 px-5 sm:px-6 py-5 space-y-4 text-xs font-mono uppercase tracking-wider animate-in slide-in-from-top-2 duration-200 shadow-2xl">
-          <div className="flex flex-col space-y-1.5">
-            {/* Crown USP */}
-            <button
-              onClick={() => { onNavigate('mlh-tag'); setMobileMenuOpen(false); }}
-              className="text-left py-2.5 px-2 text-white font-bold border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-lg transition"
-            >
-              <span className="flex items-center space-x-2">
-                <Award className="w-4 h-4 text-white shrink-0" />
-                <span className="truncate">OFFICIAL MLH TAG GUARANTEE</span>
-              </span>
-              <span className="text-[9px] bg-white text-black font-bold px-2 py-0.5 rounded-full shrink-0">USP</span>
-            </button>
+        <div className="lg:hidden fixed inset-x-0 top-16 bottom-0 z-50 bg-black/98 backdrop-blur-3xl overflow-y-auto px-5 py-6 flex flex-col justify-between animate-in fade-in duration-200 border-t border-white/10">
+          <div className="space-y-4">
+            <div className="flex flex-col space-y-1 font-mono text-xs uppercase tracking-wider">
+              {/* Crown USP */}
+              <button
+                onClick={() => handleNavClick('mlh-tag')}
+                className="text-left py-3 px-3 text-white font-bold border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-xl transition"
+              >
+                <span className="flex items-center space-x-2.5">
+                  <Award className="w-4 h-4 text-white shrink-0" />
+                  <span className="truncate">OFFICIAL MLH TAG GUARANTEE</span>
+                </span>
+                <span className="text-[9px] bg-white text-black font-bold px-2 py-0.5 rounded-full shrink-0">USP</span>
+              </button>
 
-            {/* Core Sections */}
-            <button
-              onClick={() => { onNavigate('turnkey'); setMobileMenuOpen(false); }}
-              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-lg transition"
-            >
-              Turnkey Model
-            </button>
-            <button
-              onClick={() => { onNavigate('packages'); setMobileMenuOpen(false); }}
-              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-lg transition"
-            >
-              Packages & Scope
-            </button>
-            <button
-              onClick={() => { onNavigate('ecosystem'); setMobileMenuOpen(false); }}
-              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-lg transition"
-            >
-              GRID Community (2K+ Builders)
-            </button>
-            <button
-              onClick={() => { onNavigate('proof'); setMobileMenuOpen(false); }}
-              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-lg transition"
-            >
-              Audited Proof
-            </button>
+              {/* Core Sections */}
+              <button
+                onClick={() => handleNavClick('turnkey')}
+                className="text-left py-3 px-3 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-xl transition flex items-center justify-between"
+              >
+                <span>Turnkey Model</span>
+                <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
+              </button>
+              <button
+                onClick={() => handleNavClick('packages')}
+                className="text-left py-3 px-3 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-xl transition flex items-center justify-between"
+              >
+                <span>Packages & Scope</span>
+                <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
+              </button>
+              <button
+                onClick={() => handleNavClick('ecosystem')}
+                className="text-left py-3 px-3 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-xl transition flex items-center justify-between"
+              >
+                <span>GRID Community (2K+ Builders)</span>
+                <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
+              </button>
+              <button
+                onClick={() => handleNavClick('proof')}
+                className="text-left py-3 px-3 text-zinc-300 hover:text-white border-b border-zinc-900 hover:bg-zinc-900/60 rounded-xl transition flex items-center justify-between"
+              >
+                <span>Audited Proof</span>
+                <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
+              </button>
 
-            {/* New Careers in Mobile Menu - Requested directly by user! */}
-            <button
-              onClick={() => { onOpenCareers(); setMobileMenuOpen(false); }}
-              className="text-left py-2.5 px-2 text-white font-bold border-b border-zinc-900 flex items-center justify-between bg-zinc-900/40 hover:bg-zinc-900 rounded-lg transition"
-            >
-              <span className="flex items-center space-x-2">
-                <Briefcase className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Careers & Flight Crew</span>
-              </span>
-              <span className="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>We&apos;re Hiring (5)</span>
-              </span>
-            </button>
+              {/* Careers in Mobile Menu - Requested directly by user! */}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenCareers();
+                }}
+                className="text-left py-3 px-3 text-white font-bold border-b border-zinc-900 flex items-center justify-between bg-zinc-900/70 hover:bg-zinc-900 rounded-xl transition my-1"
+              >
+                <span className="flex items-center space-x-2.5">
+                  <Briefcase className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Careers & Flight Crew</span>
+                </span>
+                <span className="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold px-2 py-0.5 rounded-full shrink-0 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Hiring (5)</span>
+                </span>
+              </button>
 
-            {/* Normal Website Essentials: Full Sitemap Directory */}
-            <button
-              onClick={() => { onOpenSitemap(); setMobileMenuOpen(false); }}
-              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-lg transition"
-            >
-              <span className="flex items-center space-x-2">
-                <Compass className="w-4 h-4 text-zinc-400 shrink-0" />
-                <span>Full Website Sitemap</span>
-              </span>
-              <span className="text-[9px] text-zinc-400 font-mono">Directory</span>
-            </button>
+              {/* Normal Website Essentials: Full Sitemap Directory */}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenSitemap();
+                }}
+                className="text-left py-3 px-3 text-zinc-300 hover:text-white border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-xl transition"
+              >
+                <span className="flex items-center space-x-2.5">
+                  <Compass className="w-4 h-4 text-zinc-400 shrink-0" />
+                  <span>Full Website Sitemap</span>
+                </span>
+                <span className="text-[10px] text-zinc-500 font-mono">Directory</span>
+              </button>
 
-            {/* Legal & Trust Center */}
-            <button
-              onClick={() => { onOpenDocument('msa'); setMobileMenuOpen(false); }}
-              className="text-left py-2.5 px-2 text-zinc-300 hover:text-white border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-lg transition"
-            >
-              <span className="flex items-center space-x-2">
-                <ShieldCheck className="w-4 h-4 text-zinc-400 shrink-0" />
-                <span>Master Services Agreement (MSA)</span>
-              </span>
-              <span className="text-[9px] text-zinc-400 font-mono">Legal</span>
-            </button>
+              {/* Legal & Trust Center */}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenDocument('msa');
+                }}
+                className="text-left py-3 px-3 text-zinc-300 hover:text-white border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-xl transition"
+              >
+                <span className="flex items-center space-x-2.5">
+                  <ShieldCheck className="w-4 h-4 text-zinc-400 shrink-0" />
+                  <span>Master Services Agreement (MSA)</span>
+                </span>
+                <span className="text-[10px] text-zinc-500 font-mono">Legal</span>
+              </button>
+
+              {/* Cookie & Telemetry Hub */}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenConsentDossier();
+                }}
+                className="text-left py-3 px-3 text-zinc-300 hover:text-white border-b border-zinc-900 flex items-center justify-between hover:bg-zinc-900/60 rounded-xl transition"
+              >
+                <span className="flex items-center space-x-2.5">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Cookie & Permissions Hub</span>
+                </span>
+                <span className="text-[10px] text-zinc-500 font-mono">Telemetry</span>
+              </button>
+            </div>
           </div>
 
           {/* Action Buttons in Mobile Menu */}
-          <div className="pt-2 flex flex-col space-y-2">
+          <div className="pt-6 space-y-3 font-mono">
             <button
-              onClick={() => { onOpenCalculator(); setMobileMenuOpen(false); }}
-              className="w-full py-2.5 rounded-xl bg-zinc-900 border border-white/20 text-white font-mono text-center active:scale-98 transition flex items-center justify-center space-x-1.5 cursor-pointer"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenCalculator();
+              }}
+              className="w-full py-3.5 rounded-xl bg-zinc-900 border border-white/20 text-white font-mono text-xs text-center active:scale-98 transition flex items-center justify-center space-x-2 cursor-pointer shadow-sm"
             >
               <Sparkles className="w-3.5 h-3.5 text-zinc-400" />
               <span>SOW Budget Estimator</span>
             </button>
             <button
-              onClick={() => { onOpenRFP(); setMobileMenuOpen(false); }}
-              className="w-full py-2.5 rounded-xl bg-white text-black font-mono font-bold text-center uppercase shadow-md active:scale-98 transition flex items-center justify-center space-x-1.5 cursor-pointer"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenRFP();
+              }}
+              className="w-full py-3.5 rounded-xl bg-white text-black font-mono font-extrabold text-xs text-center uppercase tracking-wider shadow-lg active:scale-98 transition flex items-center justify-center space-x-2 cursor-pointer"
             >
               <span>Request Proposal</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <ArrowUpRight className="w-4 h-4" />
             </button>
+
+            <div className="pt-3 text-center text-[11px] font-mono text-zinc-500 flex items-center justify-center space-x-1.5">
+              <Mail className="w-3 h-3 text-zinc-600" />
+              <span>{VOYAGE_META.contactEmail}</span>
+            </div>
           </div>
         </div>
       )}

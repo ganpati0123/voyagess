@@ -64,8 +64,8 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ onOpenRFP, onOpenCalcula
             <Sparkles className="w-3.5 h-3.5 text-white" />
             <span>The Turnkey Operating Model</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight uppercase text-glow">
-            End-to-End Execution. <br />
+          <h2 className="text-xl min-[360px]:text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight uppercase text-glow leading-[1.2] sm:leading-[1.15]">
+            End-to-End Execution. <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
               Zero Administrative Friction.
             </span>
